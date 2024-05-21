@@ -40,4 +40,23 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+.darkmode {
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+html.darkmode footer img {
+  filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(215deg) brightness(103%) contrast(101%);
 }/*# sourceMappingURL=style.css.map */
