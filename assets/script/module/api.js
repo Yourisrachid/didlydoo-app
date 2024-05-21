@@ -1,9 +1,9 @@
 
 // get method
 export async function getAllEvents() {
-    fetch("http://localhost:3000/api/events/")
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const response = await fetch("http://localhost:3000/api/events/");
+    const json = await response.json();
+    return json;
 }
 
 export async function getEvents(id) {
