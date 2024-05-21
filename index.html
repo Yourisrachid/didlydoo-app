@@ -19,6 +19,49 @@
 
     <main>
 
+        <button id="addEventBtn">Add Event</button>
+
+        <section id="eventFormSection" class="eventFormSection">
+
+            <h2>Add Event</h2>
+
+            <form id="eventForm">
+
+                <label for="eventName">Event Name :</label>
+                <input type="text" id="eventName" name="eventName" required>
+                
+                <label for="eventDates">Dates :</label>
+                <input type="text" id="eventDates" name="eventDates" required>
+                
+                <button type="submit">Submit Event</button>
+            </form>
+
+        </section>
+
+        <section class="eventsSection" id="eventsSection">
+
+            <h2>Events</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th> Name </th>
+                        <th> Dates </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="eventsTableBody" class="eventsTableBody" >
+                    
+                </tbody>
+
+            </table>
+
+        </section>
 
     </main>
 
