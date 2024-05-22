@@ -118,7 +118,18 @@ button:hover {
 }
 .eventsSection table td {
   border-radius: 10px;
-  background-color: #4CAF50;
+}
+.eventsSection table td.ok {
+  background-color: #d1ffe2;
+  border: 0.5px solid #a7fac5;
+}
+.eventsSection table td.notOk {
+  background-color: #fce8e8;
+  border: 0.5px solid #fac1c1;
+}
+.eventsSection table td.maybe {
+  background-color: #faf3d3;
+  border: 0.5px solid #fae586;
 }
 .eventsSection table th, .eventsSection table td {
   border: 0;
@@ -135,52 +146,4 @@ button:hover {
   border: 2px solid #fff;
   text-align: left;
   padding: 0.5rem 0.3rem;
-}
-.eventsSection table .name-col {
-  min-width: 150px;
-  text-align: left;
-  background-color: #fafafa;
-}
-.eventsSection table .time-slot {
-  min-width: 120px;
-}
-.eventsSection table .vote-checkbox {
-  width: 20px;
-  height: 20px;
-}
-.eventsSection table tfoot td {
-  background-color: #f9f9f9;
-}
-.eventsSection table tfoot input[type=text] {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-}
-.eventsSection table tfoot button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-.eventsSection table tfoot button:hover {
-  background-color: #45a049;
-}
-.eventsSection table .poll-table .table-danger-cell {
-  background-color: #edcbcb;
-  color: red;
-  border: 2px solid #fff;
-  padding: 0.32rem 0.3rem 0.3rem;
-  vertical-align: middle;
-  text-align: center;
-}
-.eventsSection table .poll-table .table-success-cell {
-  background-color: #cceac0;
-  color: green;
-  border: 2px solid #fff;
-  padding: 0.32rem 0.3rem 0.3rem;
-  vertical-align: middle;
-  text-align: center;
 }/*# sourceMappingURL=style.css.map */
