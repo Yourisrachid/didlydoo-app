@@ -1,3 +1,5 @@
+import { postEventsAttend } from './api.js';
+
 export function createEventsHtml(obj) {
     const events = createElements("div", null, null, null)
     const title = createElements("h2",null,null,obj.name)
@@ -9,11 +11,13 @@ export function createEventsHtml(obj) {
     const thead = createElements("thead", null, null, null)
     const tbody = createElements("tbody", null, null, null)
 
+    let dictDateId = {}
     /// header of table
     let members = {};
     thead.appendChild(createElements("th", null, null, null))
     let nbrOfColumn = 0
     for (const X of obj.dates) {
+        dictDateId["c" + nbrOfColumn] = X.date
         const th = createElements("th", null, "table-date", null)
         th.textContent = X.date
         thead.appendChild(th)
@@ -42,11 +46,14 @@ export function createEventsHtml(obj) {
     /// Add form
     const form_tr = createElements("tr", null, null, null)
     const form_th = createElements("th", null, null, null)
-    form_th.appendChild(createElements("input", "input-name", "table-input", null))
+    form_th.appendChild(createElements("input", "input-name-"+obj.id, "table-input", null))
     form_tr.appendChild(form_th)
     for (let i = 0; i < nbrOfColumn; i++) {
         const td = createElements("td", null, null, null)
-        td.appendChild(createElements("button", "input-button", "table-button", null))
+        const btn = createElements("button", "input-button-" + obj.id, "table-button", "👍")
+        btn.dataset.date = dictDateId["c"+i]
+        btn.dataset.available = true
+        td.appendChild(btn)
         form_tr.appendChild(td)
     }
     tbody.appendChild(form_tr)
@@ -54,7 +61,10 @@ export function createEventsHtml(obj) {
     /// add button (register) and total participation
     const btn_tr = createElements("tr", null, null, null)
     const btn_th = createElements("th", null, null, null)
-    btn_th.appendChild(createElements("button", "button-register", "table-button-register", null))
+    const btn_btn = createElements("button", "button-register", "table-button-register", "Register")
+    btn_btn.addEventListener('click', sendVote)
+    btn_btn.id = obj.id
+    btn_th.appendChild(btn_btn)
     btn_tr.appendChild(btn_th)
     for (let i = 0; i < nbrOfColumn; i++) {
         const td = createElements("td", null, "table-total", "0")
@@ -72,6 +82,18 @@ export function createEventsHtml(obj) {
     events.appendChild(table)
 
     return events
+}
+
+
+const sendVote = (e) => {
+    let inputName = document.querySelector("#input-name-" + e.target.id)
+    let inputButton = document.querySelectorAll("#input-button-" + e.target.id)
+
+    for (const X of inputButton) {
+        postEventsAttend(e.target.id, inputName.value, X.dataset.date, X.dataset.available)
+    }
+
+    console.log(inputName,inputButton)
 }
 
 

@@ -56,21 +56,22 @@ export async function postEventsDate(id, date) {
     return json;
 }
 
-export async function postEventsAttend(id,name, date, available) {
-    const response = await fetch("http://localhost:3000/api/events/"+id+"/attend", {
+export async function postEventsAttend(id, name, date, available) {
+    const response = await fetch("http://localhost:3000/api/events/" + id + "/attend", {
         method: "POST",
         body: JSON.stringify({
-            name: name,
-            dates: [{
-                date: date,
-                available: available
+            "name": name,
+            "dates": [{
+                "date": date,
+                "available": available
             }]
         }),
         headers: {
-            "Content- type": "application / json; charset = UTF - 8"
+            "Content-Type": "application/json; charset=UTF-8"
         }
     })
     const json = await response.json();
+    console.log(json)
     return json;
 }
 
