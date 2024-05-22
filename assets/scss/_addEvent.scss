@@ -1,0 +1,31 @@
+.eventFormSection {
+    position: fixed;
+    display: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 0.5px solid white;
+    box-shadow: 3px 3px 10 px wheat;
+    margin-left: 38%;
+    margin-top: -15%;
+    padding: 3.5%;
+    background-color: red;
+
+
+    #closeFormButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+    }
+}
+
+#eventForm {
+    display: flex;
+    flex-direction: column;
+}

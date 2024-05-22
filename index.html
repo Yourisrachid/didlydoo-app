@@ -13,7 +13,7 @@
 
         <img src="assets/img/logo2.png" alt="didlydoo logo">
 
-        <button> Enable Darkmode </button>
+        <button id="darkmodeBtn"> Enable Darkmode </button>
 
     </header>
 
@@ -23,18 +23,28 @@
 
         <section id="eventFormSection" class="eventFormSection">
 
+            <button id="closeFormButton">X</button>
+
             <h2>Add Event</h2>
 
-            <form id="eventForm">
+            <div id="eventForm">
 
                 <label for="eventName">Event Name :</label>
-                <input type="text" id="eventName" name="eventName" required>
+                <input type="text" id="eventName" name="name" required>
+
+                <label for="eventDescr"> Event Description :</label>
+                <input type="text" id="eventDescr" name="description" required>
+
+                <label for="eventAuthor">Event Author :</label>
+                <input type="text" id="eventAuthor" name="author" required>
                 
                 <label for="eventDates">Dates :</label>
-                <input type="text" id="eventDates" name="eventDates" required>
-                
-                <button type="submit">Submit Event</button>
-            </form>
+                <input type="date" id="eventDates" name="date" required>
+
+                <button id="addDates">Add Date</button>
+
+                <button id="submitBtn">Submit Event</button>
+            </div>
 
         </section>
 
