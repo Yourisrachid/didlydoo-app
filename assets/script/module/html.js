@@ -1,4 +1,4 @@
-import { postEventsAttend } from './api.js';
+import { postEventsAttend, patchEventsAttend } from './api.js';
 
 export function createEventsHtml(obj) {
     const events = createElements("div", null, null, null)
@@ -85,15 +85,16 @@ export function createEventsHtml(obj) {
 }
 
 
-const sendVote = (e) => {
+async function sendVote(e){
     let inputName = document.querySelector("#input-name-" + e.target.id)
     let inputButton = document.querySelectorAll("#input-button-" + e.target.id)
 
+    let dates = []
     for (const X of inputButton) {
-        postEventsAttend(e.target.id, inputName.value, X.dataset.date, X.dataset.available)
+        dates.push({ date: X.dataset.date, available: (X.dataset.available === "true" ? true : false)})
     }
 
-    console.log(inputName,inputButton)
+    await postEventsAttend(e.target.id, inputName.value, dates)
 }
 
 
