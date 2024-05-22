@@ -1,7 +1,14 @@
-import { postEventsAttend } from './api.js';
+import { postEventsAttend, patchEventsAttend, deleteEvents } from './api.js';
+import { viewAllEvents } from '../script.js'
 
 export function createEventsHtml(obj) {
     const events = createElements("div", null, null, null)
+
+    const btnDelete = createElements("button", null, null, "🗑️")
+    btnDelete.addEventListener('click', deleteEvent)
+    btnDelete.id = obj.id
+
+
     const title = createElements("h2",null,null,obj.name)
     const desc = createElements("p", null, null, obj.description)
     const table = createElements("table", null, null, null)
@@ -38,6 +45,7 @@ export function createEventsHtml(obj) {
         for (let i = 0; i < nbrOfColumn; i++) {
             const td = document.createElement("td")
             td.textContent = members[X]["c" + i].available === true ? "👌" : members[X]["c" + i].available === false ? "😢" : "🤷‍♂️"
+            td.classList.add(members[X]["c" + i].available === true ? "ok" : members[X]["c" + i].available === false ? "notOk" : "maybe")
             tr.appendChild(td)
         }
         tbody.appendChild(tr)
@@ -77,6 +85,7 @@ export function createEventsHtml(obj) {
     table.appendChild(thead)
     table.appendChild(tbody)
 
+    events.appendChild(btnDelete)
     events.appendChild(title)
     events.appendChild(desc)
     events.appendChild(table)
@@ -85,15 +94,35 @@ export function createEventsHtml(obj) {
 }
 
 
-const sendVote = (e) => {
+async function sendVote(e){
     let inputName = document.querySelector("#input-name-" + e.target.id)
     let inputButton = document.querySelectorAll("#input-button-" + e.target.id)
 
-    for (const X of inputButton) {
-        postEventsAttend(e.target.id, inputName.value, X.dataset.date, X.dataset.available)
-    }
+    if (inputName.value.length > 1) {
 
-    console.log(inputName,inputButton)
+        let dates = []
+        for (const X of inputButton) {
+            dates.push({ date: X.dataset.date, available: (X.dataset.available === "true" ? true : false) })
+        }
+
+        const post = await postEventsAttend(e.target.id, inputName.value, dates)
+        if (post.error) {
+            const patch = await patchEventsAttend(e.target.id, inputName.value, dates)
+        }
+
+        clearHtml()
+    }
+}
+
+async function deleteEvent(e) {
+    await deleteEvents(e.target.id)
+    clearHtml()
+}
+
+
+export function clearHtml() {
+    document.querySelector("#eventsSection").innerHTML = "";
+    viewAllEvents()
 }
 
 
