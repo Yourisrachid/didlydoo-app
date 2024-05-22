@@ -18,20 +18,28 @@ export function createEventsHtml(obj) {
     const thead = createElements("thead", null, null, null)
     const tbody = createElements("tbody", null, null, null)
 
-    let dictDateId = {}
     /// header of table
+    let dictDateId = {}
+    let contByColumn = {}
     let members = {};
-    thead.appendChild(createElements("th", null, null, null))
+    thead.appendChild(createElements("th", null, "table-hidden", null))
     let nbrOfColumn = 0
     for (const X of obj.dates) {
         dictDateId["c" + nbrOfColumn] = X.date
         const th = createElements("th", null, "table-date", null)
-        th.textContent = X.date
+
+        th.appendChild(createElements("p", null, "table-date-day", X.date.split("-")[2]))
+        th.appendChild(createElements("p", null, "table-date-month", X.date.split("-")[1]))
+        th.appendChild(createElements("p", null, "table-date-years", X.date.split("-")[0]))
+
         thead.appendChild(th)
         for (const I of X.attendees) { // trop complexe a expliquer 🤯
             if (!members[I.name]) { members[I.name] = {} }
             if (!members[I.name]["c" + nbrOfColumn]) { members[I.name]["c" + nbrOfColumn] = {} }
             members[I.name]["c" + nbrOfColumn]["available"] = I.available
+
+            if (!contByColumn["c" + nbrOfColumn]) { contByColumn["c" + nbrOfColumn] = 0 }
+            if (I.available) { contByColumn["c" + nbrOfColumn]++ }
         }
         nbrOfColumn++
     }
@@ -54,11 +62,12 @@ export function createEventsHtml(obj) {
     /// Add form
     const form_tr = createElements("tr", null, null, null)
     const form_th = createElements("th", null, null, null)
-    form_th.appendChild(createElements("input", "input-name-"+obj.id, "table-input", null))
+    form_th.appendChild(createElements("input", "input-name-" + obj.id, "table-input", null))
     form_tr.appendChild(form_th)
     for (let i = 0; i < nbrOfColumn; i++) {
         const td = createElements("td", null, null, null)
-        const btn = createElements("button", "input-button-" + obj.id, "table-button", "👍")
+        const btn = createElements("button", "input-button-" + obj.id, "table-button", "👌")
+        btn.addEventListener("click",buttonChangeStatus)
         btn.dataset.date = dictDateId["c"+i]
         btn.dataset.available = true
         td.appendChild(btn)
@@ -69,13 +78,14 @@ export function createEventsHtml(obj) {
     /// add button (register) and total participation
     const btn_tr = createElements("tr", null, null, null)
     const btn_th = createElements("th", null, null, null)
-    const btn_btn = createElements("button", "button-register", "table-button-register", "Register")
+    const btn_btn = createElements("button", "button-register", "table-button-register", "Register 🤌")
     btn_btn.addEventListener('click', sendVote)
     btn_btn.id = obj.id
     btn_th.appendChild(btn_btn)
     btn_tr.appendChild(btn_th)
     for (let i = 0; i < nbrOfColumn; i++) {
-        const td = createElements("td", null, "table-total", "0")
+        const td = createElements("td", null, "table-total", contByColumn["c" + i])
+        console.log(contByColumn,contByColumn["c" + i])
         btn_tr.appendChild(td)
     }
     tbody.appendChild(btn_tr) 
@@ -85,10 +95,11 @@ export function createEventsHtml(obj) {
     table.appendChild(thead)
     table.appendChild(tbody)
 
-    events.appendChild(btnDelete)
+
     events.appendChild(title)
     events.appendChild(desc)
     events.appendChild(table)
+    events.appendChild(btnDelete)
 
     return events
 }
@@ -115,7 +126,7 @@ async function sendVote(e){
 }
 
 async function deleteEvent(e) {
-    await deleteEvents(e.target.id)
+    const de = await deleteEvents(e.target.id)
     clearHtml()
 }
 
@@ -125,7 +136,12 @@ export function clearHtml() {
     viewAllEvents()
 }
 
+function buttonChangeStatus(e) {
+    let bool = e.target.dataset.available === "true" ? false : true;
+    e.target.dataset.available = bool + ""
 
+    e.target.textContent = bool ? "👌" :  "😢"
+}
 
 /**
  * 
