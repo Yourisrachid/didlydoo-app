@@ -1,14 +1,114 @@
+main {
+    padding: 2rem;
+}
 button {
-    background-color: #007bff;
-    color: white;
-    padding: 0.5% 1%;
+    background-color: #2180d1;
+    color: #fff;
+    padding: 0.5rem 1rem;
     text-align: center;
     text-decoration: none;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
+    border: none;
+    &:hover {
+        background-color: #0056b3;
+    }
 }
 
-button:hover {
-    background-color: #0056b3;
+
+#addEventBtn {
+    margin-bottom: 2rem;
+}
+
+.eventsSection {
+    div{
+        h2 {
+            margin-bottom: 1rem;
+            margin-left: 30px;
+        }
+        p{
+            margin-left: 60px;
+        }
+
+    }
+    table {
+        width: 100%;
+        // border-collapse: collapse;
+        margin-top: 20px;
+        th, td {
+            border: 0;
+            padding: 12px;
+            text-align: center;
+            margin: 0;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        tbody{
+            .user{
+                background-color: #c8e4ff;
+                border: 2px solid #fff;
+                text-align: left;
+                padding: .5rem .3rem;
+            }
+        }
+        
+        .name-col {
+            min-width: 150px;
+            text-align: left;
+            background-color: #fafafa;
+        }
+        .time-slot {
+            min-width: 120px;
+        }
+        .vote-checkbox {
+            width: 20px;
+            height: 20px;
+        }
+        
+        tfoot{
+            td {
+                background-color: #f9f9f9;
+            }
+            input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+        }
+    
+        .poll-table .table-danger-cell {
+            background-color: #edcbcb;
+            color: red;
+            border: 2px solid #fff;
+            padding: .32rem .3rem .3rem;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .poll-table .table-success-cell {
+            background-color: #cceac0;
+            color: green;
+            border: 2px solid #fff;
+            padding: .32rem .3rem .3rem;
+            vertical-align: middle;
+            text-align: center;
+        }
+    }
 }

@@ -1,9 +1,27 @@
 footer {
-    display: flex;
-    flex-direction: column ;
-    justify-content: center;
-    align-items: center;
+    background-color: var(--footer-background);
+    color: var(--footer-text-color);
+    padding: 20px;
     text-align: center;
-    margin-top: 10%;
-    word-spacing: 10px;
+
+    nav {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+
+        a {
+            color: var(--link-color);
+            margin: 0 10px;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    a img {
+        width: 24px;
+        height: 24px;
+    }
 }

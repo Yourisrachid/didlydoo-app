@@ -8,13 +8,13 @@ export function createEventsHtml(obj) {
 
 
     // creation of table
-    const thead = createElements("thead", null, null, null)
-    const tbody = createElements("tbody", null, null, null)
+    const thead = document.createElement("thead")
+    const tbody = document.createElement("tbody")
 
     let dictDateId = {}
     /// header of table
     let members = {};
-    thead.appendChild(createElements("th", null, null, null))
+    thead.appendChild(document.createElement("th"))
     let nbrOfColumn = 0
     for (const X of obj.dates) {
         dictDateId["c" + nbrOfColumn] = X.date
@@ -31,12 +31,12 @@ export function createEventsHtml(obj) {
 
     /// body of table
     for (const X of Object.keys(members)) {
-        const tr = createElements("tr", null, null, null)
-        const th = createElements("th", null, "table-name", null)
+        const tr = document.createElement("tr")
+        const th = document.createElement("th")
         th.textContent = X
         tr.appendChild(th)
         for (let i = 0; i < nbrOfColumn; i++) {
-            const td = createElements("td", null,null, null)
+            const td = document.createElement("td")
             td.textContent = members[X]["c" + i].available === true ? "👌" : members[X]["c" + i].available === false ? "😢" : "🤷‍♂️"
             tr.appendChild(td)
         }
