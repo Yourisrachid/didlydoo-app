@@ -12,6 +12,8 @@ export async function viewAllEvents() {
 }
 
 
+
+
 const submitBtn = document.querySelector('#submitBtn')
 const addDateBtn = document.querySelector('#addDates')
 const formInputName = document.querySelector('#eventName')
@@ -20,17 +22,21 @@ const formInputDate = document.querySelector('#eventDates')
 const formInputAuthor = document.querySelector('#eventAuthor')
 let dateTable = []
 
-addDateBtn.addEventListener('click', function() {
+addDateBtn.addEventListener('click', function () {
     dateTable.push(formInputDate.value)
     console.log(dateTable)
 })
 
-async function Test() {
-    await postEvents(formInputName.value,dateTable,formInputAuthor.value,formInputDescr.value)
+async function Test(e) {
+    await postEvents(formInputName.value, dateTable, formInputAuthor.value, formInputDescr.value)
 }
 
-//submitBtn.addEventListener('click', Test())
 
-toggleDarkMode();
-addEventBlock();
-clearHtml();
+submitBtn.addEventListener('click', async function (e) {
+    await Test()
+    clearHtml()
+})
+
+toggleDarkMode()
+addEventBlock()
+clearHtml()
