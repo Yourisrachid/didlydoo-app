@@ -45,6 +45,7 @@ export function createEventsHtml(obj) {
         for (let i = 0; i < nbrOfColumn; i++) {
             const td = createElements("td", null,null, null)
             td.textContent = members[X]["c" + i].available === true ? "👌" : members[X]["c" + i].available === false ? "😢" : "🤷‍♂️"
+            td.classList.add(members[X]["c" + i].available === true ? "ok" : members[X]["c" + i].available === false ? "notOk" : "maybe")
             tr.appendChild(td)
         }
         tbody.appendChild(tr)
