@@ -1,7 +1,7 @@
 import { getAllEvents } from './module/api.js';
-import { createEventsHtml } from './module/html.js';
+import { createEventsHtml, clearHtml } from './module/html.js';
 
-async function viewAllEvents() {
+export async function viewAllEvents() {
     const json = await getAllEvents();
 
     for (const X of json) {
@@ -9,4 +9,5 @@ async function viewAllEvents() {
     }
 }
 
-viewAllEvents()
+
+clearHtml()

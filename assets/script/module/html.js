@@ -1,7 +1,14 @@
-import { postEventsAttend, patchEventsAttend } from './api.js';
+import { postEventsAttend, patchEventsAttend, deleteEvents } from './api.js';
+import { viewAllEvents } from '../script.js'
 
 export function createEventsHtml(obj) {
     const events = createElements("div", null, null, null)
+
+    const btnDelete = createElements("button", null, null, "🗑️")
+    btnDelete.addEventListener('click', deleteEvent)
+    btnDelete.id = obj.id
+
+
     const title = createElements("h2",null,null,obj.name)
     const desc = createElements("p", null, null, obj.description)
     const table = createElements("table", null, null, null)
@@ -77,6 +84,7 @@ export function createEventsHtml(obj) {
     table.appendChild(thead)
     table.appendChild(tbody)
 
+    events.appendChild(btnDelete)
     events.appendChild(title)
     events.appendChild(desc)
     events.appendChild(table)
@@ -89,12 +97,31 @@ async function sendVote(e){
     let inputName = document.querySelector("#input-name-" + e.target.id)
     let inputButton = document.querySelectorAll("#input-button-" + e.target.id)
 
-    let dates = []
-    for (const X of inputButton) {
-        dates.push({ date: X.dataset.date, available: (X.dataset.available === "true" ? true : false)})
-    }
+    if (inputName.value.length > 1) {
 
-    await postEventsAttend(e.target.id, inputName.value, dates)
+        let dates = []
+        for (const X of inputButton) {
+            dates.push({ date: X.dataset.date, available: (X.dataset.available === "true" ? true : false) })
+        }
+
+        const post = await postEventsAttend(e.target.id, inputName.value, dates)
+        if (post.error) {
+            const patch = await patchEventsAttend(e.target.id, inputName.value, dates)
+        }
+
+        clearHtml()
+    }
+}
+
+async function deleteEvent(e) {
+    await deleteEvents(e.target.id)
+    clearHtml()
+}
+
+
+export function clearHtml() {
+    document.querySelector("#eventsSection").innerHTML = "";
+    viewAllEvents()
 }
 
 

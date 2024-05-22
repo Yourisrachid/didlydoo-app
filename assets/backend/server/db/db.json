@@ -49,6 +49,18 @@
         "name": "nath",
         "dates": [
           {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-18",
+            "available": true
+          },
+          {
+            "date": "2022-03-21",
+            "available": true
+          },
+          {
             "date": "2022-03-22",
             "available": true
           }
@@ -107,19 +119,19 @@
         "dates": [
           {
             "date": "2022-03-17",
-            "available": false
+            "available": true
           },
           {
             "date": "2022-03-18",
-            "available": false
+            "available": true
           },
           {
             "date": "2022-03-21",
-            "available": false
+            "available": true
           },
           {
             "date": "2022-03-22",
-            "available": false
+            "available": true
           }
         ]
       },
@@ -143,62 +155,31 @@
             "available": true
           }
         ]
+      },
+      {
+        "name": "test27895",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-18",
+            "available": true
+          },
+          {
+            "date": "2022-03-21",
+            "available": true
+          },
+          {
+            "date": "2022-03-22",
+            "available": true
+          }
+        ]
       }
     ],
     "created_at": "2021-11-15T00:00",
     "num_modification": 3,
     "last_modification": "2021-11-15T02:15"
-  },
-  {
-    "id": "38b643aeb883",
-    "name": "The big sale @ The Mall",
-    "description": "I want to buy stuff at the mall, but don't want to go alone who is up?",
-    "author": "Jean D'eau",
-    "dates": [
-      "2022-01-10",
-      "2022-02-10",
-      "2022-03-10",
-      "2022-03-11",
-      "2022-03-12"
-    ],
-    "attendees": [
-      {
-        "name": "Michou",
-        "dates": [
-          {
-            "date": "2022-01-10",
-            "available": true
-          }
-        ]
-      },
-      {
-        "name": "Jane Doe",
-        "dates": [
-          {
-            "date": "2022-01-10",
-            "available": true
-          },
-          {
-            "date": "2022-02-10",
-            "available": true
-          },
-          {
-            "date": "2022-03-10",
-            "available": true
-          },
-          {
-            "date": "2022-03-11",
-            "available": true
-          },
-          {
-            "date": "2022-03-12",
-            "available": false
-          }
-        ]
-      }
-    ],
-    "created_at": "2021-11-13T14:00",
-    "num_modification": 0,
-    "last_modification": "2021-11-13T14:00"
   }
 ]
