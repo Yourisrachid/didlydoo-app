@@ -21,6 +21,7 @@ export function createEventsHtml(obj) {
     /// header of table
     let dictDateId = {}
     let contByColumn = {}
+    let maxValueColumn = 0
     let members = {};
     thead.appendChild(createElements("th", null, "table-hidden", null))
     let nbrOfColumn = 0
@@ -33,14 +34,17 @@ export function createEventsHtml(obj) {
         th.appendChild(createElements("p", null, "table-date-years", X.date.split("-")[0]))
 
         thead.appendChild(th)
+        let tempMaxValue = 0
         for (const I of X.attendees) { // trop complexe a expliquer 🤯
             if (!members[I.name]) { members[I.name] = {} }
             if (!members[I.name]["c" + nbrOfColumn]) { members[I.name]["c" + nbrOfColumn] = {} }
             members[I.name]["c" + nbrOfColumn]["available"] = I.available
 
             if (!contByColumn["c" + nbrOfColumn]) { contByColumn["c" + nbrOfColumn] = 0 }
-            if (I.available) { contByColumn["c" + nbrOfColumn]++ }
+            if (I.available) { contByColumn["c" + nbrOfColumn]++; tempMaxValue++}
         }
+        if (maxValueColumn < tempMaxValue){maxValueColumn = tempMaxValue}
+
         nbrOfColumn++
     }
 
@@ -84,8 +88,8 @@ export function createEventsHtml(obj) {
     btn_th.appendChild(btn_btn)
     btn_tr.appendChild(btn_th)
     for (let i = 0; i < nbrOfColumn; i++) {
-        const td = createElements("td", null, "table-total", contByColumn["c" + i])
-        console.log(contByColumn,contByColumn["c" + i])
+        const td = createElements("td", null, "table-total" + (maxValueColumn == contByColumn["c" + i] ? " table-max":""), contByColumn["c" + i] + (maxValueColumn == contByColumn["c" + i] ? " 🔥" : ""))
+
         btn_tr.appendChild(td)
     }
     tbody.appendChild(btn_tr) 
