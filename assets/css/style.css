@@ -21,7 +21,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", "Source Sans Pro", Arial, sans-serif;
   background-color: "fff";
   color: #333;
   margin: 0;
@@ -115,6 +115,10 @@ button:hover {
 .eventsSection table {
   width: 100%;
   margin-top: 20px;
+}
+.eventsSection table td {
+  border-radius: 10px;
+  background-color: #4CAF50;
 }
 .eventsSection table th, .eventsSection table td {
   border: 0;

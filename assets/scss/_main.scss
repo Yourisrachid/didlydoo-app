@@ -37,6 +37,10 @@ button {
         width: 100%;
         // border-collapse: collapse;
         margin-top: 20px;
+        td{
+            border-radius: 10px;
+            background-color: #4CAF50;
+        }
         th, td {
             border: 0;
             padding: 12px;
