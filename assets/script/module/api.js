@@ -1,117 +1,119 @@
 
 // get method
 export async function getAllEvents() {
-    fetch("http://localhost:3000/api/events/")
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const response = await fetch("http://localhost:3000/api/events/");
+    const json = await response.json();
+    return json;
 }
 
 export async function getEvents(id) {
-    fetch('http://localhost:3000/api/events/' + id)
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const response = await fetch('http://localhost:3000/api/events/' + id)
+    const json = await response.json();
+    return json;
 }
 
 export async function getAllAttendees() {
-    fetch("http://localhost:3000/api/attendees/")
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const response = await fetch("http://localhost:3000/api/attendees/")
+    const json = await response.json();
+    return json;
 }
 
 export async function getAttendees(id) {
-    fetch('http://localhost:3000/api/attendees/' + id)
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const response = await fetch('http://localhost:3000/api/attendees/' + id)
+    const json = await response.json();
+    return json;
 }
 
 // post method
-export async function postEvents(name,date,author,description) {
-    fetch("http://localhost:3000/api/events/", {
+export async function postEvents(name, dates, author, description) {
+    let body = {
+        name: name,
+        dates: dates,
+        author: author,
+        description: description
+}
+    const response = await fetch("http://localhost:3000/api/events/", {
         method: "POST",
-        body: JSON.stringify({
-            name: name,
-            dates: date,
-            author: author,
-            description: description
-        }),
+        body: JSON.stringify(body),
         headers: {
-            "Content- type": "application / json; charset = UTF - 8"
+            "Content-type": "application/json; charset = UTF-8"
         }
     })
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const json = await response.json();
+    return json;
 }
 
-export async function postEventsDate(id, date) {
-    fetch("http://localhost:3000/api/events/"+id+"/add_dates", {
+export async function postEventsDate(id, dates) {
+    let body = {
+        dates: dates
+    }
+    const response = await fetch("http://localhost:3000/api/events/"+id+"/add_dates", {
         method: "POST",
-        body: JSON.stringify({
-            dates: date
-        }),
+        body: JSON.stringify(body),
         headers: {
-            "Content- type": "application / json; charset = UTF - 8"
+            "Content-type": "application/json; charset = UTF-8"
         }
     })
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const json = await response.json();
+    return json;
 }
 
-export async function postEventsAttend(id,name, date, available) {
-    fetch("http://localhost:3000/api/events/"+id+"/attend", {
+export async function postEventsAttend(id, name, dates) {
+    let body = {
+        name: name,
+        dates: dates
+    }
+
+    const response = await fetch("http://localhost:3000/api/events/" + id + "/attend", {
         method: "POST",
-        body: JSON.stringify({
-            name: name,
-            dates: [{
-                date: date,
-                available: available
-            }]
-        }),
+        body: JSON.stringify(body),
         headers: {
-            "Content- type": "application / json; charset = UTF - 8"
+            "Content-Type": "application/json; charset=UTF-8"
         }
     })
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const json = await response.json();
+    return json;
 }
 
 //patch method
 export async function patchEvents(id, name, author, description) {
-    fetch("http://localhost:3000/api/events/"+id+"/", {
+    let body = {
+        name: name,
+        author: author,
+        description: description
+    }
+    const response = await fetch("http://localhost:3000/api/events/"+id+"/", {
         method: "PATCH",
-        body: JSON.stringify({
-            name: name,
-            author: author,
-            description: description
-        }),
+        body: JSON.stringify(body),
         headers: {
-            "Content- type": "application / json; charset = UTF - 8"
+            "Content-type": "application/json; charset = UTF-8"
         }
     })
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const json = await response.json();
+    return json;
 }
 
-export async function patchEventsAttend(id, name, date, available) {
-    fetch("http://localhost:3000/api/events/" + id + "/attend", {
+export async function patchEventsAttend(id, name, dates) {
+    let body = {
+        name: name,
+        dates: dates
+    }
+
+    const response = await fetch("http://localhost:3000/api/events/" + id + "/attend", {
         method: "PATCH",
-        body: JSON.stringify({
-            name: name,
-            dates: [{
-                date: date,
-                available: available
-            }]
-        }),
+        body: JSON.stringify(body),
         headers: {
-            "Content- type": "application / json; charset = UTF - 8"
+            "Content-type": "application/json; charset = UTF-8"
         }
     })
-        .then(response => response.json())
-        .then(json => console.log(json))
+    const json = await response.json();
+    console.log(json)
+    return json;
 }
 
 // delete method
-export async function deleteEvents(id, name, date, available) {
-    fetch("http://localhost:3000/api/events/[id]/", {
+export async function deleteEvents(id) {
+    fetch("http://localhost:3000/api/events/"+id+"/", {
         method: "DELETE"
     })
 }
