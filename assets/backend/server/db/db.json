@@ -1,25 +1,218 @@
 [
   {
-    "id": "a9cb74eddda5",
-    "name": "Un super event ",
-    "author": "nath",
-    "description": "je pense que ça sera super",
+    "id": "f5b6564b5dc4",
+    "name": "My sweet 16",
+    "description": "I am going to be 16, let us all party together! Help me pick a date so we can go together",
+    "author": "John Doe",
     "dates": [
-      "2024-05-23"
+      "2022-03-17",
+      "2022-03-18",
+      "2022-03-21",
+      "2022-03-22"
     ],
-    "created_at": "2024-05-22T13:40:30.481Z",
-    "num_modification": 8,
-    "last_modification": "2024-05-23T08:19:49.765Z",
     "attendees": [
+      {
+        "name": "Michou",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-18",
+            "available": false
+          },
+          {
+            "date": "2022-03-21",
+            "available": true
+          }
+        ]
+      },
+      {
+        "name": "Jean-Daniel",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": false
+          },
+          {
+            "date": "2022-03-21",
+            "available": true
+          }
+        ]
+      },
+      {
+        "name": "name",
+        "dates": []
+      },
       {
         "name": "nath",
         "dates": [
           {
-            "date": "2024-05-23",
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-18",
+            "available": false
+          },
+          {
+            "date": "2022-03-21",
+            "available": false
+          },
+          {
+            "date": "2022-03-22",
             "available": true
           }
         ]
+      },
+      {
+        "name": "test",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-18",
+            "available": true
+          },
+          {
+            "date": "2022-03-21",
+            "available": true
+          },
+          {
+            "date": "2022-03-22",
+            "available": false
+          }
+        ]
+      },
+      {
+        "name": "testname",
+        "dates": [
+          {
+            "date": "2022-03-22",
+            "available": true
+          }
+        ]
+      },
+      {
+        "name": "test2",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          }
+        ]
+      },
+      {
+        "name": "test3",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": false
+          },
+          {
+            "date": "2022-03-18",
+            "available": false
+          },
+          {
+            "date": "2022-03-21",
+            "available": false
+          },
+          {
+            "date": "2022-03-22",
+            "available": false
+          }
+        ]
+      },
+      {
+        "name": "test4",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-18",
+            "available": true
+          },
+          {
+            "date": "2022-03-21",
+            "available": true
+          },
+          {
+            "date": "2022-03-22",
+            "available": true
+          }
+        ]
+      },
+      {
+        "name": "test5",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-18",
+            "available": true
+          },
+          {
+            "date": "2022-03-21",
+            "available": true
+          },
+          {
+            "date": "2022-03-22",
+            "available": true
+          }
+        ]
+      },
+      {
+        "name": "test27895",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-18",
+            "available": true
+          },
+          {
+            "date": "2022-03-21",
+            "available": true
+          },
+          {
+            "date": "2022-03-22",
+            "available": true
+          }
+        ]
+      },
+      {
+        "name": "new",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": false
+          },
+          {
+            "date": "2022-03-18",
+            "available": true
+          },
+          {
+            "date": "2022-03-21",
+            "available": true
+          },
+          {
+            "date": "2022-03-22",
+            "available": false
+          }
+        ]
       }
-    ]
+    ],
+    "created_at": "2021-11-15T00:00",
+    "num_modification": 3,
+    "last_modification": "2021-11-15T02:15"
   }
 ]
