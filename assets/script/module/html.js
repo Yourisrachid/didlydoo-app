@@ -173,10 +173,11 @@ function openEditForm(id, name, author, description) {
     document.getElementById('editAuthor').value = author;
     document.getElementById('editDescription').value = description;
 
-    editEventFormSection.style.display = 'flex';
+    editEventFormSection.showModal();
+
 
     document.getElementById('closeEditFormButton').addEventListener('click', () => {
-        editEventFormSection.style.display = 'none';
+        editEventFormSection.close();
     });
 }
 

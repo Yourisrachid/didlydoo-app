@@ -1,18 +1,19 @@
 export function addEventBlock() {
+
+    const eventFormDialog = document.getElementById('eventFormSection');
+    const addEventBtn = document.getElementById('addEventBtn')
+    const closeEventBtn = document.getElementById('closeFormButton')
+
+    addEventBtn.addEventListener('click', () => {
+        eventFormDialog.showModal();
+    });
+
+    closeEventBtn.addEventListener('click', () => {
+        eventFormDialog.close();
+    });
     
-    const addEventBlock = document.querySelector('.eventFormSection')
-    const addEventBtn = document.querySelector('#addEventBtn')
-    const closeBtn = document.querySelector('#closeFormButton')
+
     const formInputDate = document.querySelector('#eventDates')
-
-
-    addEventBtn.addEventListener('click', function() {
-        addEventBlock.style.display = 'flex';
-    })
-
-    closeBtn.addEventListener('click', function() {
-        addEventBlock.style.display = 'none';
-    })
 
     // DATES
 
