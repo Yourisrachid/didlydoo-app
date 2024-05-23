@@ -39,16 +39,16 @@ button {
         td{
             border-radius: 10px;
             &.ok{
-                background-color: #d1ffe2;
+                background-color: var(--td-ok-bg);
                 border: 0.5px solid #a7fac5;
 
             }
             &.notOk{
-                background-color: #fce8e8;
+                background-color: var(--td-notok-bg);
                 border: 0.5px solid #fac1c1;
             }
             &.maybe{
-                background-color: #faf3d3;
+                background-color: var(--td-maybe-bg);
                 border: 0.5px solid #fae586;
             }
         }
@@ -81,5 +81,8 @@ button {
                 padding: .5rem .3rem;
             }
         }
+    }
+    .editBtn{
+        margin: 20px;
     }
 }
