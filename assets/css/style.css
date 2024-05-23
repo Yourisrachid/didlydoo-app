@@ -180,6 +180,21 @@ button:hover {
 .eventsSection .editBtn {
   margin: 20px;
 }
+.eventsSection dialog {
+  background-color: var(--add-bg-color);
+  width: 300px;
+  text-align: center;
+  height: 200px;
+  border: none;
+  border-radius: 4px;
+}
+.eventsSection dialog input {
+  padding: 0.5rem 1rem;
+  width: 10rem;
+}
+.eventsSection dialog button {
+  margin: 20px;
+}
 
 .eventFormSection {
   position: fixed;
