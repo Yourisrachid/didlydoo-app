@@ -186,8 +186,7 @@ button:hover {
   width: 50%;
   background-color: var(--add-bg-color);
 }
-
-.closeFormButton {
+.eventFormSection .closeFormButton {
   float: right;
   border: none;
   font-size: 1.2em;
@@ -199,7 +198,7 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
-.eventForm input {
+#eventForm input, #editEventForm input {
   width: 100%;
   padding: 8px;
   margin: 3px 0;
@@ -209,6 +208,6 @@ button:hover {
   font-size: 16px;
   transition: border-color 0.3s ease;
 }
-.eventForm #addDates {
+#eventForm #addDates, #editEventForm #addDates {
   margin: 10px;
 }/*# sourceMappingURL=style.css.map */
