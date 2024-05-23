@@ -1,0 +1,40 @@
+@media screen and (max-width: 1024px) {
+    
+    #addEventBtn {
+        margin-left: 25%;
+    }
+
+    .eventsSection {
+
+        margin-left: -20%;
+        text-align: center;
+        position: relative;
+        overflow-x: hidden;
+
+        div{
+            overflow-x: scroll;
+
+            h2 {
+                position: sticky;
+                left: 0;
+                top: 0;
+                margin-left: 0;
+            }
+
+            p {
+                position: sticky;
+                left: 0;
+                top: 0;
+            }
+
+            .btnDiv{
+                position: sticky;
+                left: 0;
+                top: 0;
+            }
+    
+        }
+        
+    }
+
+}

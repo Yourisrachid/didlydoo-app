@@ -174,13 +174,11 @@ button:hover {
 
 .eventFormSection {
   position: fixed;
-  display: none;
   text-align: center;
   flex-direction: column;
   border: 0.5px solid rgb(39, 38, 38);
   box-shadow: 3px 3px 10px rgb(58, 57, 55);
   margin-left: 20%;
-  margin-top: -5%;
   padding: 2%;
   border-radius: 4px;
   width: 50%;
@@ -210,4 +208,35 @@ button:hover {
 }
 #eventForm #addDates, #editEventForm #addDates {
   margin: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  #addEventBtn {
+    margin-left: 25%;
+  }
+  .eventsSection {
+    margin-left: -20%;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .eventsSection div {
+    overflow-x: scroll;
+  }
+  .eventsSection div h2 {
+    position: sticky;
+    left: 0;
+    top: 0;
+    margin-left: 0;
+  }
+  .eventsSection div p {
+    position: sticky;
+    left: 0;
+    top: 0;
+  }
+  .eventsSection div .btnDiv {
+    position: sticky;
+    left: 0;
+    top: 0;
+  }
 }/*# sourceMappingURL=style.css.map */

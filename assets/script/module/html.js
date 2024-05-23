@@ -174,12 +174,16 @@ export function createEventsHtml(obj) {
 
     // append child events
 
+    const btnDiv = document.createElement('div')
+    btnDiv.classList.add('btnDiv')
+
     events.appendChild(title)
     events.appendChild(desc)
     events.appendChild(table)
     events.appendChild(dialogBox)
-    events.appendChild(btnEdit)
-    events.appendChild(btnDelete)
+    events.appendChild(btnDiv)
+    btnDiv.appendChild(btnEdit)
+    btnDiv.appendChild(btnDelete)
 
     return events
 }
