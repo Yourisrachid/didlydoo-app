@@ -2,15 +2,15 @@
     position: fixed;
     display: none;
     text-align: center;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    border: 0.5px solid white;
-    box-shadow: 3px 3px 10 px wheat;
-    margin-left: 38%;
-    margin-top: -15%;
-    padding: 3.5%;
-    background-color: red;
+    border: 0.5px solid rgb(39, 38, 38);
+    box-shadow: 3px 3px 10px rgb(58, 57, 55);
+    margin-left: 20%;
+    margin-top: -5%;
+    padding: 2%;
+    border-radius: 4px;
+    width: 50%;
+    background-color: var(--add-bg-color);
 
 
     .closeFormButton {
@@ -21,11 +21,24 @@
     border: none;
     font-size: 20px;
     cursor: pointer;
-    color: #fff;
+    color: var(--body-text-color);
     }
 }
 
 .eventForm {
     display: flex;
     flex-direction: column;
+    input{
+        width: 100%;
+            padding: 8px;
+            margin: 3px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+    }
+    #addDates{
+        margin: 10px;
+    }
 }
