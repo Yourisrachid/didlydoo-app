@@ -13,19 +13,16 @@
     background-color: var(--add-bg-color);
 
 
-    .closeFormButton {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: none;
+.closeFormButton {
+    float: right;
     border: none;
-    font-size: 20px;
+    font-size: 1.2em;
     cursor: pointer;
     color: var(--body-text-color);
     }
 }
 
-.eventForm {
+#eventForm, #editEventForm {
     display: flex;
     flex-direction: column;
     input{

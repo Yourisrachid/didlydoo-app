@@ -1,4 +1,4 @@
-import { postEventsAttend, patchEventsAttend, deleteEvents } from './api.js';
+import { postEventsAttend, patchEventsAttend, deleteEvents, postEventsDate } from './api.js';
 import { viewAllEvents } from '../script.js'
 
 export function createEventsHtml(obj) {
@@ -50,6 +50,53 @@ export function createEventsHtml(obj) {
 
         nbrOfColumn++
     }
+
+    // btn add date
+    const thBtnDate = createElements("th", null, null, null)
+    const btnAddDate = createElements("button", null, "table-button", "➕📆")
+    btnAddDate.addEventListener("click", function (e) {
+        const dialogBox = createElements("dialog", null, null, null)
+
+        const date = createElements("input",null,null,null)
+        date.type = "date"
+        date.id = "eventDates"
+        date.name = "date"
+
+        const now = new Date();
+        const isoDateString = now.toISOString();
+        const minDate = isoDateString.substring(0, 10);
+
+        date.min = minDate
+
+        const btnOk = createElements("button", null, null, "➕")
+        btnOk.addEventListener('click', function (e) {
+            if (date.value != null) {
+                let dates = []
+                dates.push(date.value)
+                postEventsDate(obj.id, dates)
+                dialogBox.close()
+            }
+        })
+
+
+        const btnNotOk = createElements("button", null, null, "❌")
+        btnNotOk.addEventListener('click', function (e) {
+            dialogBox.close()
+        })
+
+        dialogBox.appendChild(createElements("p", null, null, " Add date"))
+        dialogBox.appendChild(date)
+        dialogBox.appendChild(btnNotOk)
+        dialogBox.appendChild(btnOk)
+
+        events.appendChild(dialogBox)
+
+        dialogBox.showModal()
+    })
+    thBtnDate.appendChild(btnAddDate)
+    thead.appendChild(thBtnDate)
+
+
 
     /// body of table
     for (const X of Object.keys(members)) {
@@ -153,14 +200,11 @@ async function sendVote(e) {
         if (post.error) {
             const patch = await patchEventsAttend(e.target.id, inputName.value, dates)
         }
-
-        clearHtml()
     }
 }
 
 async function deleteEvent(e) {
     const de = await deleteEvents(e.target.id)
-    clearHtml()
 }
 
 function openEditForm(id, name, author, description) {
@@ -173,12 +217,14 @@ function openEditForm(id, name, author, description) {
     document.getElementById('editAuthor').value = author;
     document.getElementById('editDescription').value = description;
 
-    editEventFormSection.style.display = 'flex';
+    editEventFormSection.showModal();
+
 
     document.getElementById('closeEditFormButton').addEventListener('click', () => {
-        editEventFormSection.style.display = 'none';
+        editEventFormSection.close();
     });
 }
+
 
 
 export function clearHtml() {
