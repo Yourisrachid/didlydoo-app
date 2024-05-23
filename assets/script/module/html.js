@@ -4,9 +4,6 @@ import { viewAllEvents } from '../script.js'
 export function createEventsHtml(obj) {
     const events = createElements("div", null, null, null)
 
-    const btnDelete = createElements("button", null, null, "🗑️")
-    btnDelete.addEventListener('click', deleteEvent)
-    btnDelete.id = obj.id
 
     const btnEdit = createElements("button", null, null, "✏️")
     btnEdit.addEventListener('click', () => openEditForm(obj))
@@ -15,7 +12,7 @@ export function createEventsHtml(obj) {
     btnEdit.addEventListener('click', () => openEditForm(obj.id, obj.name, obj.author, obj.description));
 
 
-    const title = createElements("h2",null,null,obj.name)
+    const title = createElements("h2", null, null, obj.name)
     const desc = createElements("p", null, null, obj.description)
     const table = createElements("table", null, null, null)
 
@@ -47,9 +44,9 @@ export function createEventsHtml(obj) {
             members[I.name]["c" + nbrOfColumn]["available"] = I.available
 
             if (!contByColumn["c" + nbrOfColumn]) { contByColumn["c" + nbrOfColumn] = 0 }
-            if (I.available) { contByColumn["c" + nbrOfColumn]++; tempMaxValue++}
+            if (I.available) { contByColumn["c" + nbrOfColumn]++; tempMaxValue++ }
         }
-        if (maxValueColumn < tempMaxValue){maxValueColumn = tempMaxValue}
+        if (maxValueColumn < tempMaxValue) { maxValueColumn = tempMaxValue }
 
         nbrOfColumn++
     }
@@ -77,8 +74,8 @@ export function createEventsHtml(obj) {
     for (let i = 0; i < nbrOfColumn; i++) {
         const td = createElements("td", null, null, null)
         const btn = createElements("button", "input-button-" + obj.id, "table-button", "👌")
-        btn.addEventListener("click",buttonChangeStatus)
-        btn.dataset.date = dictDateId["c"+i]
+        btn.addEventListener("click", buttonChangeStatus)
+        btn.dataset.date = dictDateId["c" + i]
         btn.dataset.available = true
         td.appendChild(btn)
         form_tr.appendChild(td)
@@ -94,21 +91,46 @@ export function createEventsHtml(obj) {
     btn_th.appendChild(btn_btn)
     btn_tr.appendChild(btn_th)
     for (let i = 0; i < nbrOfColumn; i++) {
-        const td = createElements("td", null, "table-total" + (maxValueColumn == contByColumn["c" + i] ? " table-max":""), contByColumn["c" + i] + (maxValueColumn == contByColumn["c" + i] ? " 🔥" : ""))
+        const td = createElements("td", null, "table-total" + (maxValueColumn == contByColumn["c" + i] ? " table-max" : ""), contByColumn["c" + i] + (maxValueColumn == contByColumn["c" + i] ? " 🔥" : ""))
 
         btn_tr.appendChild(td)
     }
-    tbody.appendChild(btn_tr) 
+    tbody.appendChild(btn_tr)
 
-
-    // append child
+    // append child table
     table.appendChild(thead)
     table.appendChild(tbody)
 
+    // dialog box
+
+    const dialogBox = createElements("dialog", null, null, null)
+
+    const btnOk = createElements("button", null, null, "Yes")
+    btnOk.addEventListener('click', deleteEvent)
+    btnOk.id = obj.id
+
+    const btnNotOk = createElements("button", null, null, "No")
+    btnNotOk.addEventListener('click', function (e) {
+        dialogBox.close()
+    })
+
+    dialogBox.appendChild(createElements("p", null, null, "Are you sur ?"))
+    dialogBox.appendChild(btnNotOk)
+    dialogBox.appendChild(btnOk)
+
+    // delete button ( to dialog box )
+    const btnDelete = createElements("button", null, null, "🗑️")
+    btnDelete.addEventListener('click', function (e) {
+        dialogBox.showModal()
+    })
+
+
+    // append child events
 
     events.appendChild(title)
     events.appendChild(desc)
     events.appendChild(table)
+    events.appendChild(dialogBox)
     events.appendChild(btnEdit)
     events.appendChild(btnDelete)
 
@@ -116,7 +138,7 @@ export function createEventsHtml(obj) {
 }
 
 
-async function sendVote(e){
+async function sendVote(e) {
     let inputName = document.querySelector("#input-name-" + e.target.id)
     let inputButton = document.querySelectorAll("#input-button-" + e.target.id)
 
@@ -168,7 +190,7 @@ function buttonChangeStatus(e) {
     let bool = e.target.dataset.available === "true" ? false : true;
     e.target.dataset.available = bool + ""
 
-    e.target.textContent = bool ? "👌" :  "😢"
+    e.target.textContent = bool ? "👌" : "😢"
 }
 
 /**
