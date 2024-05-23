@@ -67,6 +67,7 @@ export function createEventsHtml(obj) {
         const minDate = isoDateString.substring(0, 10);
 
         date.min = minDate
+        date.value = minDate
 
         const btnOk = createElements("button", null, null, "➕")
         btnOk.addEventListener('click', function (e) {
@@ -86,6 +87,7 @@ export function createEventsHtml(obj) {
 
         dialogBox.appendChild(createElements("p", null, null, " Add date"))
         dialogBox.appendChild(date)
+        dialogBox.appendChild(createElements("p", null, null, ""))
         dialogBox.appendChild(btnNotOk)
         dialogBox.appendChild(btnOk)
 
@@ -102,7 +104,20 @@ export function createEventsHtml(obj) {
     for (const X of Object.keys(members)) {
         const tr = document.createElement("tr")
         const th = document.createElement("th")
-        th.textContent = X
+        th.textContent = X + " "
+        const edit = createElements("a", null, null, "✏️")
+
+        edit.addEventListener("click", function (e) {
+            document.querySelector("#input-name-" + obj.id).value = X
+
+            for (let i = 0; i < nbrOfColumn; i++) {
+                const btn = document.querySelector("#input-button-" + obj.id + "-" + i)
+                btn.dataset.available = members[X]["c" + i].available === true ? true : false
+                btn.textContent = members[X]["c" + i].available === true ? "👌" : "😢"
+            }
+        })
+
+        th.appendChild(edit)
         tr.appendChild(th)
         for (let i = 0; i < nbrOfColumn; i++) {
             const td = document.createElement("td")
@@ -120,7 +135,7 @@ export function createEventsHtml(obj) {
     form_tr.appendChild(form_th)
     for (let i = 0; i < nbrOfColumn; i++) {
         const td = createElements("td", null, null, null)
-        const btn = createElements("button", "input-button-" + obj.id, "table-button", "👌")
+        const btn = createElements("button", "input-button-" + obj.id + "-" + i, "table-button " + "input-button-" + obj.id, "👌")
         btn.addEventListener("click", buttonChangeStatus)
         btn.dataset.date = dictDateId["c" + i]
         btn.dataset.available = true
@@ -191,7 +206,7 @@ export function createEventsHtml(obj) {
 
 async function sendVote(e) {
     let inputName = document.querySelector("#input-name-" + e.target.id)
-    let inputButton = document.querySelectorAll("#input-button-" + e.target.id)
+    let inputButton = document.querySelectorAll(".input-button-" + e.target.id)
 
     if (inputName.value.length > 1) {
 

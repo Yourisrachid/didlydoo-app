@@ -11,6 +11,9 @@
   --add-button-text-color: #fff;
   --add-button-hover: #0056b3;
   --th-background-color: #f2f2f2;
+  --td-ok-bg: #d1ffe2;
+  --td-notok-bg: #fce8e8;
+  --td-maybe-bg: #faf3d3;
   --footer-background: #e1e1e1;
   --footer-text-color: #373a3c;
   --link-color: #373a3c;
@@ -30,6 +33,9 @@
   --add-button-text-color: #333;
   --add-button-hover: #353944;
   --th-background-color: #353944;
+  --td-ok-bg: #99bea7;
+  --td-notok-bg: #c49595;
+  --td-maybe-bg: #dfcf87;
   --footer-background: #343642;
   --footer-text-color: #e1e1e1;
   --link-color: #e1e1e1;
@@ -135,15 +141,15 @@ button:hover {
   border-radius: 10px;
 }
 .eventsSection table td.ok {
-  background-color: #d1ffe2;
+  background-color: var(--td-ok-bg);
   border: 0.5px solid #a7fac5;
 }
 .eventsSection table td.notOk {
-  background-color: #fce8e8;
+  background-color: var(--td-notok-bg);
   border: 0.5px solid #fac1c1;
 }
 .eventsSection table td.maybe {
-  background-color: #faf3d3;
+  background-color: var(--td-maybe-bg);
   border: 0.5px solid #fae586;
 }
 .eventsSection table th, .eventsSection table td {
@@ -171,6 +177,9 @@ button:hover {
   text-align: left;
   padding: 0.5rem 0.3rem;
 }
+.eventsSection .editBtn {
+  margin: 20px;
+}
 
 .eventFormSection {
   position: fixed;
@@ -179,6 +188,7 @@ button:hover {
   border: 0.5px solid rgb(39, 38, 38);
   box-shadow: 3px 3px 10px rgb(58, 57, 55);
   margin-left: 20%;
+  margin-top: 10%;
   padding: 2%;
   border-radius: 4px;
   width: 50%;
