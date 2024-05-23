@@ -13,7 +13,7 @@
     background-color: red;
 
 
-    #closeFormButton {
+    .closeFormButton {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -25,7 +25,7 @@
     }
 }
 
-#eventForm {
+.eventForm {
     display: flex;
     flex-direction: column;
 }
