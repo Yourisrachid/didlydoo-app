@@ -9,10 +9,11 @@
     --link-color: #373a3c;
 }
   
-[data-theme="dark"] {
+.darkmode {
     --header-background: #333;
     --text-color: #fff;
     --button-color: #fff;
+    --button-text-color: #333;
     --button-bg-color: #fff;
     --button-hover: #131212;
     --footer-background: #373a3c;

@@ -9,10 +9,11 @@
   --link-color: #373a3c;
 }
 
-[data-theme=dark] {
+.darkmode {
   --header-background: #333;
   --text-color: #fff;
   --button-color: #fff;
+  --button-text-color: #333;
   --button-bg-color: #fff;
   --button-hover: #131212;
   --footer-background: #373a3c;
@@ -146,25 +147,6 @@ button:hover {
   border: 2px solid #fff;
   text-align: left;
   padding: 0.5rem 0.3rem;
-}
-
-:root {
-  --background-color: #ffffff;
-  --text-color: #000000;
-}
-
-.darkmode {
-  --background-color: #1a1a1a;
-  --text-color: #ffffff;
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-html.darkmode footer img {
-  filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(215deg) brightness(103%) contrast(101%);
 }
 
 .eventFormSection {
