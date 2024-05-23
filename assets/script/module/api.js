@@ -1,3 +1,4 @@
+import { clearHtml } from './html.js';
 
 // get method
 export async function getAllEvents() {
@@ -55,6 +56,7 @@ export async function postEventsDate(id, dates) {
         }
     })
     const json = await response.json();
+    clearHtml()
     return json;
 }
 
@@ -72,6 +74,7 @@ export async function postEventsAttend(id, name, dates) {
         }
     })
     const json = await response.json();
+    clearHtml()
     return json;
 }
 
@@ -107,7 +110,7 @@ export async function patchEventsAttend(id, name, dates) {
         }
     })
     const json = await response.json();
-    console.log(json)
+    clearHtml()
     return json;
 }
 
@@ -116,4 +119,5 @@ export async function deleteEvents(id) {
     fetch("http://localhost:3000/api/events/"+id+"/", {
         method: "DELETE"
     })
+    clearHtml()
 }
