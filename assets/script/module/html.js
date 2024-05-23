@@ -62,6 +62,12 @@ export function createEventsHtml(obj) {
         date.id = "eventDates"
         date.name = "date"
 
+        const now = new Date();
+        const isoDateString = now.toISOString();
+        const minDate = isoDateString.substring(0, 10);
+
+        date.min = minDate
+
         const btnOk = createElements("button", null, null, "➕")
         btnOk.addEventListener('click', function (e) {
             if (date.value != null) {
