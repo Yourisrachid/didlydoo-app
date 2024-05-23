@@ -98,6 +98,7 @@ footer a img {
 
 main {
   padding: 2rem;
+  margin-left: 50px;
 }
 
 button {
@@ -126,11 +127,8 @@ button:hover {
   margin-bottom: 1rem;
   margin-left: 30px;
 }
-.eventsSection div p {
-  margin-left: 60px;
-}
 .eventsSection table {
-  width: 100%;
+  width: 80%;
   margin-top: 20px;
 }
 .eventsSection table td {
@@ -160,6 +158,12 @@ button:hover {
 }
 .eventsSection table th.table-hidden {
   background: transparent;
+}
+.eventsSection table th.table-date {
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
 }
 .eventsSection table tbody .user {
   background-color: #c8e4ff;
