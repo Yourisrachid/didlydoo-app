@@ -23,11 +23,11 @@
 
         <section id="eventFormSection" class="eventFormSection">
 
-            <button id="closeFormButton">X</button>
+            <button id="closeFormButton" class="closeFormButton">X</button>
 
             <h2>Add Event</h2>
 
-            <div id="eventForm">
+            <div id="eventForm" class="eventForm">
 
                 <label for="eventName">Event Name :</label>
                 <input type="text" id="eventName" name="name" required>
@@ -44,6 +44,29 @@
                 <button id="addDates">Add Date</button>
 
                 <button id="submitBtn">Submit Event</button>
+            </div>
+
+        </section>
+
+        <section id="editEventFormSection" class="eventFormSection">
+
+            <button id="closeEditFormButton" class="closeFormButton">X</button>
+
+            <h2>Edit Event</h2>
+
+            <div id="editEventForm" class="eventForm">
+
+                <label for="editName">Event Name :</label>
+                <input type="text" id="editName" name="name" required>
+
+                <label for="editDescription">Event Description :</label>
+                <input id="editDescription" name="description" required></textarea>
+
+                <label for="editAuthor">Event Author :</label>
+                <input type="text" id="editAuthor" name="author" required>
+                
+                <button id="saveEditButton">Save</button>
+
             </div>
 
         </section>

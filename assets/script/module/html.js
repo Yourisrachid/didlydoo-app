@@ -8,6 +8,12 @@ export function createEventsHtml(obj) {
     btnDelete.addEventListener('click', deleteEvent)
     btnDelete.id = obj.id
 
+    const btnEdit = createElements("button", null, null, "✏️")
+    btnEdit.addEventListener('click', () => openEditForm(obj))
+    btnEdit.id = `edit-${obj.id}`
+    btnEdit.classList.add('editBtn')
+    btnEdit.addEventListener('click', () => openEditForm(obj.id, obj.name, obj.author, obj.description));
+
 
     const title = createElements("h2",null,null,obj.name)
     const desc = createElements("p", null, null, obj.description)
@@ -103,6 +109,7 @@ export function createEventsHtml(obj) {
     events.appendChild(title)
     events.appendChild(desc)
     events.appendChild(table)
+    events.appendChild(btnEdit)
     events.appendChild(btnDelete)
 
     return events
@@ -132,6 +139,23 @@ async function sendVote(e){
 async function deleteEvent(e) {
     const de = await deleteEvents(e.target.id)
     clearHtml()
+}
+
+function openEditForm(id, name, author, description) {
+    const editEventFormSection = document.getElementById('editEventFormSection');
+    const editEventForm = document.getElementById('editEventForm');
+
+    editEventForm.dataset.eventId = id;
+
+    document.getElementById('editName').value = name;
+    document.getElementById('editAuthor').value = author;
+    document.getElementById('editDescription').value = description;
+
+    editEventFormSection.style.display = 'flex';
+
+    document.getElementById('closeEditFormButton').addEventListener('click', () => {
+        editEventFormSection.style.display = 'none';
+    });
 }
 
 
