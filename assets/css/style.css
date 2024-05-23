@@ -1,4 +1,6 @@
 :root {
+  --body-bg-color: #fff;
+  --body-text-color: #333;
   --header-background: #2180d1;
   --text-color: #fff;
   --button-bg-color: #fff;
@@ -10,21 +12,23 @@
 }
 
 .darkmode {
-  --header-background: #333;
+  --body-bg-color: #1e2329;
+  --body-text-color: #fff;
+  --header-background: #343642;
   --text-color: #fff;
   --button-color: #fff;
   --button-text-color: #333;
-  --button-bg-color: #fff;
-  --button-hover: #131212;
-  --footer-background: #373a3c;
+  --button-bg-color: #e1e1e1;
+  --button-hover: #1e2329;
+  --footer-background: #343642;
   --footer-text-color: #e1e1e1;
   --link-color: #e1e1e1;
 }
 
 body {
   font-family: "Segoe UI", "Source Sans Pro", Arial, sans-serif;
-  background-color: "fff";
-  color: #333;
+  background-color: var(--body-bg-color);
+  color: var(--body-text-color);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
