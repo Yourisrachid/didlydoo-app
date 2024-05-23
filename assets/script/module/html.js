@@ -1,12 +1,10 @@
 import { postEventsAttend, patchEventsAttend, deleteEvents } from './api.js';
 import { viewAllEvents } from '../script.js'
+import { doValidationPopup } from './popup.js'
 
 export function createEventsHtml(obj) {
     const events = createElements("div", null, null, null)
 
-    const btnDelete = createElements("button", null, null, "🗑️")
-    btnDelete.addEventListener('click', deleteEvent)
-    btnDelete.id = obj.id
 
 
     const title = createElements("h2",null,null,obj.name)
@@ -94,15 +92,40 @@ export function createEventsHtml(obj) {
     }
     tbody.appendChild(btn_tr) 
 
-
-    // append child
+    // append child table
     table.appendChild(thead)
     table.appendChild(tbody)
 
+    // dialog box
+
+    const dialogBox = createElements("dialog", null, null, null)
+    
+    const btnOk = createElements("button", null, null, "Yes")
+    btnOk.addEventListener('click', deleteEvent)
+    btnOk.id = obj.id
+
+    const btnNotOk = createElements("button", null, null, "No")
+    btnNotOk.addEventListener('click', function (e) {
+        dialogBox.close()
+    })
+
+    dialogBox.appendChild(createElements("p", null, null, "Are you sur ?"))
+    dialogBox.appendChild(btnNotOk)
+    dialogBox.appendChild(btnOk)
+
+    // delete button ( to dialog box )
+    const btnDelete = createElements("button", null, null, "🗑️")
+    btnDelete.addEventListener('click', function (e) {
+        dialogBox.showModal()
+    })
+
+
+    // append child events
 
     events.appendChild(title)
     events.appendChild(desc)
     events.appendChild(table)
+    events.appendChild(dialogBox)
     events.appendChild(btnDelete)
 
     return events
@@ -130,6 +153,7 @@ async function sendVote(e){
 }
 
 async function deleteEvent(e) {
+    doValidationPopup()
     const de = await deleteEvents(e.target.id)
     clearHtml()
 }
