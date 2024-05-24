@@ -277,18 +277,20 @@ export function createEventsHtmlMobile(obj){
         btnDialogOk.addEventListener('click', (e) => {
             e.target.parentElement.close()
         })
-        dialogBoxOk.appendChild(createElements("p", null, null, "Members:"))
+        dialogBoxOk.appendChild(createElements("p", null, null, "Members who voted ✔️"))
         for (const X of Object.keys(membersOk)) {
             const p = document.createElement("p")
-            p.textContent = "👤 " + X + " "
+            p.textContent = "👤 " + X + " ✔️"
             dialogBoxOk.appendChild(p)
         }
         dialogBoxOk.appendChild(btnDialogOk)
         events.appendChild(dialogBoxOk)
 
-        span_ok.addEventListener('click', (e) => {
-            dialogBoxOk.showModal()
-        })
+        if (Object.keys(membersOk).length > 0) {
+            span_ok.addEventListener('click', (e) => {
+                dialogBoxOk.showModal()
+            })
+        }
 
         const dialogBoxNot = createElements("dialog", null, null, null)
         const btnOkNot = createElements("button", null, null, "ok")
@@ -296,18 +298,20 @@ export function createEventsHtmlMobile(obj){
             e.target.parentElement.close()
         })
 
-        dialogBoxNot.appendChild(createElements("p", null, null, "Members:"))
+        dialogBoxNot.appendChild(createElements("p", null, null, "Members who voted ✖️"))
         for (const X of Object.keys(membersNotOk)) {
             const p = document.createElement("p")
-            p.textContent = "👤 " + X + " "
+            p.textContent = "👤 " + X + " ✖️"
             dialogBoxNot.appendChild(p)
         }
         dialogBoxNot.appendChild(btnOkNot)
         events.appendChild(dialogBoxNot)
 
-        span_notOk.addEventListener('click', (e) => {
-            dialogBoxNot.showModal()
-        })
+        if (Object.keys(membersNotOk).length > 0) {
+            span_notOk.addEventListener('click', (e) => {
+                dialogBoxNot.showModal()
+            })
+        }
 
         tr.appendChild(td_presence)
 
