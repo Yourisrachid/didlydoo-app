@@ -56,14 +56,16 @@ body {
   }
 }
 @media only screen and (max-width: 769px) {
+  .eventsSection {
+    max-width: 400px;
+  }
   .desktop {
     display: none;
   }
   table {
-    border-collapse: collapse;
-  }
-  table tbody {
     background-color: var(--th-background-color);
+    border-radius: 10px;
+    margin: 20px 0;
   }
 }
 header {
@@ -149,82 +151,120 @@ button:hover {
   margin-bottom: 1rem;
   margin-left: 30px;
 }
-.eventsSection table {
+.eventsSection .desktop table {
   width: 80%;
   margin-top: 20px;
 }
-.eventsSection table td {
+.eventsSection .desktop table td {
   border-radius: 10px;
 }
-.eventsSection table td.ok {
+.eventsSection .desktop table td.ok {
   background-color: var(--td-ok-bg);
   border: 0.5px solid #a7fac5;
 }
-.eventsSection table td.notOk {
+.eventsSection .desktop table td.notOk {
   background-color: var(--td-notok-bg);
   border: 0.5px solid #fac1c1;
 }
-.eventsSection table td.maybe {
+.eventsSection .desktop table td.maybe {
   background-color: var(--td-maybe-bg);
   border: 0.5px solid #fae586;
 }
-.eventsSection table th, .eventsSection table td {
+.eventsSection .desktop table th, .eventsSection .desktop table td {
   border: 0;
   padding: 12px;
   text-align: center;
   margin: 0;
 }
-.eventsSection table th {
+.eventsSection .desktop table th {
   background-color: var(--th-background-color);
   font-weight: lighter;
 }
-.eventsSection table th.table-hidden {
+.eventsSection .desktop table th.table-hidden {
   background: transparent;
 }
-.eventsSection table th.table-date {
+.eventsSection .desktop table th.table-date {
   font-weight: lighter;
   border-radius: 4px;
   height: 50px;
 }
-.eventsSection table .table-date .table-date-day {
+.eventsSection .desktop table .table-date .table-date-day {
   font-size: 30px;
   font-weight: 350;
   text-align: center;
   padding: 0;
   margin: 0;
 }
-.eventsSection table .table-date div {
+.eventsSection .desktop table .table-date div {
   display: flex;
   justify-content: space-between;
 }
-.eventsSection table .table-date .table-date-month {
+.eventsSection .desktop table .table-date .table-date-month {
   font-size: 20px;
   padding: 0;
   margin: 0;
 }
-.eventsSection table .table-date .table-date-years {
+.eventsSection .desktop table .table-date .table-date-years {
   font-size: 20px;
   padding: 0;
   margin: 0;
 }
-.eventsSection table tr th.classTh {
+.eventsSection .desktop table tr th.classTh {
   text-align: left;
   display: flex;
   justify-content: space-between;
 }
-.eventsSection table tr th.classTh a {
+.eventsSection .desktop table tr th.classTh a {
   cursor: pointer;
 }
-.eventsSection table tbody .user {
+.eventsSection .desktop table tbody .user {
   background-color: #c8e4ff;
   border: 2px solid #fff;
   text-align: left;
   padding: 0.5rem 0.3rem;
 }
-.eventsSection .editBtn {
+.eventsSection .mobile {
+  display: flex;
+}
+.eventsSection .mobile table {
+  justify-content: center;
+}
+.eventsSection .mobile table td {
+  border: 0;
+  padding: 12px;
+  text-align: center;
+  margin: 0;
+}
+.eventsSection .mobile table .table-date-mobile {
+  background-color: var(--body-bg-color);
+}
+.eventsSection .mobile table .table-date-mobile .table-div-date {
+  display: flex;
+  justify-content: space-between;
+}
+.eventsSection .mobile table .table-date-mobile .table-date-day {
+  font-size: 30px;
+  font-weight: 350;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.eventsSection .mobile table .table-date-month {
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+.eventsSection .mobile table .table-date-years {
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.editBtn {
   margin: 20px;
 }
-.eventsSection dialog {
+
+dialog {
   background-color: var(--add-bg-color);
   width: 300px;
   text-align: center;
@@ -232,11 +272,11 @@ button:hover {
   border: none;
   border-radius: 4px;
 }
-.eventsSection dialog input {
+dialog input {
   padding: 0.5rem 1rem;
   width: 10rem;
 }
-.eventsSection dialog button {
+dialog button {
   margin: 20px;
 }
 
@@ -277,35 +317,4 @@ button:hover {
 }
 #eventForm #addDates, #editEventForm #addDates {
   margin: 10px;
-}
-
-@media screen and (max-width: 1024px) {
-  #addEventBtn {
-    margin-left: 25%;
-  }
-  .eventsSection {
-    margin-left: -20%;
-    text-align: center;
-    position: relative;
-    overflow-x: hidden;
-  }
-  .eventsSection div {
-    overflow-x: scroll;
-  }
-  .eventsSection div h2 {
-    position: sticky;
-    left: 0;
-    top: 0;
-    margin-left: 0;
-  }
-  .eventsSection div p {
-    position: sticky;
-    left: 0;
-    top: 0;
-  }
-  .eventsSection div .btnDiv {
-    position: sticky;
-    left: 0;
-    top: 0;
-  }
 }/*# sourceMappingURL=style.css.map */

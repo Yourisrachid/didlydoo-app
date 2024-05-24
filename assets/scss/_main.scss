@@ -33,57 +33,118 @@ button {
         }
 
     }
-    table {
-        width: 80%;
-        margin-top: 20px;
-        td{
-            border-radius: 10px;
-            &.ok{
-                background-color: var(--td-ok-bg);
-                border: 0.5px solid #a7fac5;
-
+    .desktop{
+        table {
+            width: 80%;
+            margin-top: 20px;
+            td{
+                border-radius: 10px;
+                &.ok{
+                    background-color: var(--td-ok-bg);
+                    border: 0.5px solid #a7fac5;
+    
+                }
+                &.notOk{
+                    background-color: var(--td-notok-bg);
+                    border: 0.5px solid #fac1c1;
+                }
+                &.maybe{
+                    background-color: var(--td-maybe-bg);
+                    border: 0.5px solid #fae586;
+                }
             }
-            &.notOk{
-                background-color: var(--td-notok-bg);
-                border: 0.5px solid #fac1c1;
-            }
-            &.maybe{
-                background-color: var(--td-maybe-bg);
-                border: 0.5px solid #fae586;
-            }
-        }
-        th, td {
-            border: 0;
-            padding: 12px;
-            text-align: center;
-            margin: 0;
-        }
-        th {
-            background-color: var(--th-background-color);
-            font-weight: lighter;
-            &.table-hidden{
-                background: transparent;
-            }
-            &.table-date{
-                // width: 100px;
-                font-weight: lighter;
-                // text-align: center;
-                border-radius: 4px;
-                height: 50px;
-            }
-        }
-        .table-date{
-            .table-date-day{
-                font-size: 30px;
-                font-weight: 350;
+            th, td {
+                border: 0;
+                padding: 12px;
                 text-align: center;
-                padding: 0;
                 margin: 0;
             }
-        div{
-            display: flex;
-            justify-content: space-between;
+            th {
+                background-color: var(--th-background-color);
+                font-weight: lighter;
+                &.table-hidden{
+                    background: transparent;
+                }
+                &.table-date{
+                    // width: 100px;
+                    font-weight: lighter;
+                    // text-align: center;
+                    border-radius: 4px;
+                    height: 50px;
+                }
+            }
+            .table-date{
+                .table-date-day{
+                    font-size: 30px;
+                    font-weight: 350;
+                    text-align: center;
+                    padding: 0;
+                    margin: 0;
+                }
+            div{
+                display: flex;
+                justify-content: space-between;
+            }
+                .table-date-month{
+                    
+                    font-size: 20px;
+                    padding: 0;
+                    margin: 0;
+                }
+                .table-date-years{
+                    
+                    font-size: 20px;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+            tr{
+                th.classTh{
+                    text-align: left;
+                    display: flex;
+                    justify-content: space-between;
+                    a{
+                        cursor: pointer;
+                    }
+                }
+            }
+            tbody{
+                .user{
+                    background-color: #c8e4ff;
+                    border: 2px solid #fff;
+                    text-align: left;
+                    padding: .5rem .3rem;
+                }
+            }
         }
+    }
+    .mobile{
+        display: flex;
+        
+        table {
+            // width: 80%;
+            // margin: 20px 0;
+            justify-content: center;
+            td {
+                border: 0;
+                padding: 12px;
+                text-align: center;
+                margin: 0;
+            }
+            .table-date-mobile{
+                background-color: var(--body-bg-color);
+                .table-div-date{
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .table-date-day{
+                    font-size: 30px;
+                    font-weight: 350;
+                    text-align: center;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
             .table-date-month{
                 
                 font-size: 20px;
@@ -97,41 +158,23 @@ button {
                 margin: 0;
             }
         }
-        tr{
-            th.classTh{
-                text-align: left;
-                display: flex;
-                justify-content: space-between;
-                a{
-                    cursor: pointer;
-                }
-            }
-        }
-        tbody{
-            .user{
-                background-color: #c8e4ff;
-                border: 2px solid #fff;
-                text-align: left;
-                padding: .5rem .3rem;
-            }
-        }
     }
-    .editBtn{
+}
+.editBtn{
+    margin: 20px;
+}
+dialog{
+    background-color: var(--add-bg-color);
+    width: 300px;
+    text-align: center;
+    height: 200px;
+    border: none;
+    border-radius: 4px;
+    input{
+        padding: 0.5rem 1rem;
+        width: 10rem;
+    }
+    button{
         margin: 20px;
-    }
-    dialog{
-        background-color: var(--add-bg-color);
-        width: 300px;
-        text-align: center;
-        height: 200px;
-        border: none;
-        border-radius: 4px;
-        input{
-            padding: 0.5rem 1rem;
-            width: 10rem;
-        }
-        button{
-            margin: 20px;
-        }
     }
 }

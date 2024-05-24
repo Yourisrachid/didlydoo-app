@@ -71,15 +71,17 @@ body {
 }
 
 @media only screen and (max-width: 769px) {
+    .eventsSection{
+        max-width: 400px;
+    }
     .desktop{
         display: none;
     }
     table{
-        border-collapse: collapse;
-        tbody{
-            background-color: var(--th-background-color);
-            
-        }
+        // border-collapse: collapse;
+        background-color: var(--th-background-color);
+        border-radius: 10px;
+        margin: 20px 0;
     }
 }
 
