@@ -106,6 +106,8 @@ export function createEventsHtml(obj) {
         const th = document.createElement("th")
         th.textContent = "👤 " + X + " "
         const edit = createElements("a", null, null, "✏️")
+        th.classList.add('classTh')
+        
 
         edit.addEventListener("click", function (e) {
             document.querySelector("#input-name-" + obj.id).value = X
