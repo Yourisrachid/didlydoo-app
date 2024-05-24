@@ -33,9 +33,9 @@ export function createEventsHtml(obj) {
         dictDateId["c" + nbrOfColumn] = X.date
         const th = createElements("th", null, "table-date", null)
 
+        th.appendChild(createElements("span", null, "table-date-years", X.date.split("-")[0]))
+        th.appendChild(createElements("span", null, "table-date-month", intToMonth(X.date.split("-")[1])))
         th.appendChild(createElements("p", null, "table-date-day", X.date.split("-")[2]))
-        th.appendChild(createElements("p", null, "table-date-month", intToMonth(X.date.split("-")[1])))
-        th.appendChild(createElements("p", null, "table-date-years", X.date.split("-")[0]))
 
         thead.appendChild(th)
         let tempMaxValue = 0
@@ -226,6 +226,38 @@ export function createEventsHtmlMobile(obj){
     thead.appendChild(th)
 
     ///body of table
+
+    for (const X of obj.dates) {
+ 
+        const tr = createElements("tr",null,null,null)
+        const td_date = createElements("td", null, "table-date-mobile", null)
+
+        td_date.appendChild(createElements("p", null, "table-date-day", X.date.split("-")[2]))
+        td_date.appendChild(createElements("p", null, "table-date-month", intToMonth(X.date.split("-")[1])))
+        td_date.appendChild(createElements("p", null, "table-date-years", X.date.split("-")[0]))
+        
+        tr.appendChild(td_date)
+
+        const td_presence = createElements("td", null, "table-date-mobile", null)
+
+
+        let tempMaxValue = 0
+        let _ok = 0
+        let _notOk = 0
+        for (const I of X.attendees) { 
+            if (I.available) { _ok++ }else{ _notOk++}
+        }
+
+        td_presence.appendChild(createElements("span", null, "table-presence-ok", "✔️ " + _ok))
+        td_presence.appendChild(createElements("span", null, "table-presence-notOk", "✖️ " + _notOk))
+
+        tr.appendChild(td_presence)
+
+
+
+        tbody.appendChild(tr)
+    }
+
 
 
     // append child table
