@@ -26,16 +26,39 @@ button {
 }
 
 .eventsSection {
+
+
+    .tableCard {
+        border-radius: 15px;
+        transition: box-shadow .4s ease-in-out;
+        box-shadow: var(--box-shadow-color);
+        padding: 1%;
+        margin-bottom: 5%;
+    }
+
+
     div{
+
         h2 {
-            margin-bottom: 1rem;
-            margin-left: 30px;
+            margin-bottom: 2.5%;
+            text-align: center;
+            border-bottom: var(--h2-border);
+
+
+            font: {
+                family: "IBM Plex Sans", sans-serif;
+                weight: 500;
+                style: normal;
+                size: 40px;
+            }
         }
 
     }
     table {
         width: 80%;
         margin-top: 20px;
+
+        
         td{
             border-radius: 10px;
             &.ok{
@@ -57,10 +80,14 @@ button {
             padding: 12px;
             text-align: center;
             margin: 0;
+            border-radius: 5px;
+
         }
         th {
             background-color: var(--th-background-color);
             font-weight: bold;
+            transition: color .4s ease-in-out, background-color .4s ease-in-out;
+
             &.table-hidden{
                 background: transparent;
             }
@@ -72,6 +99,16 @@ button {
                 
             }
         }
+
+        thead {
+            .table-date {
+                transition: color .4s ease-in-out, background-color .4s ease-in-out;
+            }
+
+            th {
+                transition: color .4s ease-in-out, background-color .4s ease-in-out;
+            }
+        }
         
         tbody{
             .user{
@@ -81,6 +118,7 @@ button {
                 padding: .5rem .3rem;
             }
         }
+
     }
     .editBtn{
         margin: 20px;

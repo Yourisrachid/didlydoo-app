@@ -3,6 +3,7 @@ footer {
     color: var(--footer-text-color);
     padding: 20px;
     text-align: center;
+    transition: color .4s ease-in-out, background-color .4s ease-in-out;
 
     nav {
         display: flex;
@@ -23,5 +24,6 @@ footer {
     a img {
         width: 24px;
         height: 24px;
+        filter: var(--footer-img-filter);
     }
 }

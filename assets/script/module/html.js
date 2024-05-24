@@ -3,6 +3,7 @@ import { viewAllEvents } from '../script.js'
 
 export function createEventsHtml(obj) {
     const events = createElements("div", null, null, null)
+    events.classList.add('tableCard')
 
 
     const btnEdit = createElements("button", null, null, "✏️")

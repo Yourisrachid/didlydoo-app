@@ -6,11 +6,49 @@
     border: 0.5px solid rgb(39, 38, 38);
     box-shadow: 3px 3px 10px rgb(58, 57, 55);
     margin-left: 20%;
-    margin-top: 10%;
     padding: 2%;
     border-radius: 4px;
     width: 50%;
     background-color: var(--add-bg-color);
+    color: var(--body-text-color);
+    overflow-y: scroll;
+
+
+    h2 {
+
+        margin-left: 6%;
+
+        font: {
+            family: "IBM Plex Sans", sans-serif;
+            weight: 500;
+            style: normal;
+            size: 25px;
+        }
+    }
+  
+    input:active {
+        transform: scale(0.995);
+    }
+
+
+    textarea {
+
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        padding: 8px;
+        margin: 3px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+
+    }
+  
+    textarea:active {
+        transform: scale(0.995);
+    }
 
 
 .closeFormButton {

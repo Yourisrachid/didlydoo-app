@@ -5,6 +5,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: color .4s ease-in-out, background .4s ease-in-out;
 }
 
 header img {
