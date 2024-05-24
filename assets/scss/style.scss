@@ -72,6 +72,26 @@ body {
     transition: color .4s ease-in-out, background .4s ease-in-out;
 }
 
+@media only screen and (min-width: 770px) {
+    .mobile{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .eventsSection{
+        max-width: 100px;
+    }
+    .desktop{
+        display: none;
+    }
+    table{
+        // border-collapse: collapse;
+        background-color: var(--th-background-color);
+        border-radius: 10px;
+        margin: 20px 0;
+    }
+}
 
 @import "header";
 @import "footer";

@@ -2,7 +2,6 @@ import { postEventsAttend, patchEventsAttend, deleteEvents, postEventsDate } fro
 import { viewAllEvents } from '../script.js'
 
 export function createEventsHtml(obj) {
-
     const events = createElements("div", null, "desktop", null)
     events.classList.add('tableCard')
 
@@ -249,7 +248,7 @@ export function createEventsHtmlMobile(obj){
         
         tr.appendChild(td_date)
 
-        const td_presence = createElements("td", null, "table-date-mobile", null)
+        const td_presence = createElements("td", null, "table-date-presence", null)
 
 
         let _ok = 0

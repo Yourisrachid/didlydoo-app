@@ -56,6 +56,24 @@ body {
   transition: color 0.4s ease-in-out, background 0.4s ease-in-out;
 }
 
+@media only screen and (min-width: 770px) {
+  .mobile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 769px) {
+  .eventsSection {
+    max-width: 100px;
+  }
+  .desktop {
+    display: none;
+  }
+  table {
+    background-color: var(--th-background-color);
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+}
 header {
   background-color: var(--header-background);
   color: var(--text-color);
@@ -157,60 +175,180 @@ button:hover {
 .eventsSection div p {
   text-align: center;
 }
-.eventsSection table {
+.eventsSection .desktop table {
   width: 80%;
   margin-top: 20px;
 }
-.eventsSection table td {
+.eventsSection .desktop table td {
   border-radius: 10px;
 }
-.eventsSection table td.ok {
+.eventsSection .desktop table td.ok {
   background-color: var(--td-ok-bg);
   border: 0.5px solid #a7fac5;
 }
-.eventsSection table td.notOk {
+.eventsSection .desktop table td.notOk {
   background-color: var(--td-notok-bg);
   border: 0.5px solid #fac1c1;
 }
-.eventsSection table td.maybe {
+.eventsSection .desktop table td.maybe {
   background-color: var(--td-maybe-bg);
   border: 0.5px solid #fae586;
 }
-.eventsSection table th, .eventsSection table td {
+.eventsSection .desktop table th, .eventsSection .desktop table td {
+  border: 0;
+  padding: 12px;
+  text-align: center;
+  margin: 0;
+}
+.eventsSection .desktop table th {
+  background-color: var(--th-background-color);
+  font-weight: lighter;
+}
+.eventsSection .desktop table th.table-hidden {
+  background: transparent;
+}
+.eventsSection .desktop table th.table-date {
+  font-weight: lighter;
+  border-radius: 4px;
+  height: 50px;
+}
+.eventsSection .desktop table .table-date .table-date-day {
+  font-size: 30px;
+  font-weight: 350;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.eventsSection .desktop table .table-date div {
+  display: flex;
+  justify-content: space-between;
+}
+.eventsSection .desktop table .table-date .table-date-month {
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+.eventsSection .desktop table .table-date .table-date-years {
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+.eventsSection .desktop table tr th.classTh {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+.eventsSection .desktop table tr th.classTh a {
+  cursor: pointer;
+}
+.eventsSection .desktop table tbody .user {
+  background-color: #c8e4ff;
+  border: 2px solid #fff;
+  text-align: left;
+  padding: 0.5rem 0.3rem;
+}
+.eventsSection .mobile table {
+  justify-content: center;
+}
+.eventsSection .mobile table td {
+  border: 0;
+  padding: 12px;
+  margin: 0;
+}
+.eventsSection .mobile table .table-date-mobile {
+  background-color: var(--body-bg-color);
+  max-width: 100px;
+  border-radius: 4px;
+}
+.eventsSection .mobile table .table-date-mobile .table-div-date {
+  display: flex;
+  justify-content: space-between;
+}
+.eventsSection .mobile table .table-date-mobile .table-date-day {
+  font-size: 20px;
+  font-weight: 350;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.eventsSection .mobile table .table-date-month {
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+}
+.eventsSection .mobile table .table-date-years {
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.editBtn {
+  margin: 20px;
+}
+
+dialog {
+  background-color: var(--add-bg-color);
+  width: 300px;
+  text-align: center;
+  height: 200px;
+  border: none;
+  border-radius: 4px;
+}
+dialog input {
+  padding: 0.5rem 1rem;
+  width: 10rem;
+}
+dialog table {
+  width: 80%;
+  margin-top: 20px;
+}
+dialog table td {
+  border-radius: 10px;
+}
+dialog table td.ok {
+  background-color: var(--td-ok-bg);
+  border: 0.5px solid #a7fac5;
+}
+dialog table td.notOk {
+  background-color: var(--td-notok-bg);
+  border: 0.5px solid #fac1c1;
+}
+dialog table td.maybe {
+  background-color: var(--td-maybe-bg);
+  border: 0.5px solid #fae586;
+}
+dialog table th, dialog table td {
   border: 0;
   padding: 12px;
   text-align: center;
   margin: 0;
   border-radius: 5px;
 }
-.eventsSection table th {
+dialog table th {
   background-color: var(--th-background-color);
   font-weight: bold;
   transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
 }
-.eventsSection table th.table-hidden {
+dialog table th.table-hidden {
   background: transparent;
 }
-.eventsSection table th.table-date {
+dialog table th.table-date {
   font-weight: bold;
   align-items: center;
   text-align: center;
   border-radius: 4px;
 }
-.eventsSection table thead .table-date {
+dialog table thead .table-date {
   transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
 }
-.eventsSection table thead th {
+dialog table thead th {
   transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
 }
-.eventsSection table tbody .user {
+dialog table tbody .user {
   background-color: #c8e4ff;
   border: 2px solid #fff;
   text-align: left;
   padding: 0.5rem 0.3rem;
-}
-.eventsSection .editBtn {
-  margin: 20px;
 }
 
 .eventFormSection {
@@ -278,36 +416,6 @@ button:hover {
   margin: 10px;
 }
 
-@media screen and (max-width: 1024px) {
-  #addEventBtn {
-    margin-left: 25%;
-  }
-  .eventsSection {
-    margin-left: -20%;
-    text-align: center;
-    position: relative;
-    overflow-x: hidden;
-  }
-  .eventsSection div {
-    overflow-x: scroll;
-  }
-  .eventsSection div h2 {
-    position: sticky;
-    left: 0;
-    top: 0;
-    margin-left: 0;
-  }
-  .eventsSection div p {
-    position: sticky;
-    left: 0;
-    top: 0;
-  }
-  .eventsSection div .btnDiv {
-    position: sticky;
-    left: 0;
-    top: 0;
-  }
-}
 .alert {
   position: fixed;
   margin-top: 30%;
