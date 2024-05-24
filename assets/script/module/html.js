@@ -207,7 +207,32 @@ export function createEventsHtml(obj) {
 }
 
 export function createEventsHtmlMobile(obj){
-    const events = createElements("div", null, "desktop", null)
+    const events = createElements("div", null, "mobile", null)
+
+    const table = createElements("table", null, null, null)
+
+    // creation of table
+    const thead = document.createElement("thead")
+    const tbody = document.createElement("tbody")
+
+    /// head of table
+    const title = createElements("h2", null, null, obj.name)
+    const desc = createElements("p", null, null, obj.description)
+
+    const th = createElements("th", null, "table-name-mobile", null)
+
+    th.appendChild(title)
+    th.appendChild(desc)
+    thead.appendChild(th)
+
+    ///body of table
+
+
+    // append child table
+    table.appendChild(thead)
+    table.appendChild(tbody)
+
+    events.appendChild(table)
     return events
 }
 
