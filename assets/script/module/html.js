@@ -2,6 +2,7 @@ import { postEventsAttend, patchEventsAttend, deleteEvents, postEventsDate } fro
 import { viewAllEvents } from '../script.js'
 
 export function createEventsHtml(obj) {
+
     const events = createElements("div", null, "desktop", null)
 
 
@@ -202,6 +203,11 @@ export function createEventsHtml(obj) {
     btnDiv.appendChild(btnEdit)
     btnDiv.appendChild(btnDelete)
 
+    return events
+}
+
+export function createEventsHtmlMobile(obj){
+    const events = createElements("div", null, "desktop", null)
     return events
 }
 

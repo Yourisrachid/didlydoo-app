@@ -8,6 +8,7 @@ export async function viewAllEvents() {
 
     for (const X of json) {
         document.querySelector("#eventsSection").appendChild(createEventsHtml(X))
+        document.querySelector("#eventsSection").appendChild(createEventsHtmlMobile(X))
     }
 }
 
