@@ -119,6 +119,31 @@
             "available": false
           }
         ]
+      },
+      {
+        "name": "new guys",
+        "dates": [
+          {
+            "date": "2024-05-24",
+            "available": false
+          },
+          {
+            "date": "2024-05-30",
+            "available": true
+          },
+          {
+            "date": "2024-06-02",
+            "available": true
+          },
+          {
+            "date": "2024-06-04",
+            "available": true
+          },
+          {
+            "date": "2234-06-02",
+            "available": false
+          }
+        ]
       }
     ]
   },
