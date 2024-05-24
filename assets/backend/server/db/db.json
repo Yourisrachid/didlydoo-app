@@ -8,7 +8,8 @@
       "2024-06-02",
       "2024-06-04",
       "2024-05-30",
-      "2024-05-24"
+      "2024-05-24",
+      "2234-06-02"
     ],
     "created_at": "2024-05-23T12:58:13.086Z",
     "num_modification": 0,
@@ -91,6 +92,56 @@
           {
             "date": "2024-06-04",
             "available": true
+          }
+        ]
+      },
+      {
+        "name": "jean mich mich",
+        "dates": [
+          {
+            "date": "2024-05-24",
+            "available": true
+          },
+          {
+            "date": "2024-05-30",
+            "available": true
+          },
+          {
+            "date": "2024-06-02",
+            "available": true
+          },
+          {
+            "date": "2024-06-04",
+            "available": true
+          },
+          {
+            "date": "2234-06-02",
+            "available": false
+          }
+        ]
+      },
+      {
+        "name": "new guys",
+        "dates": [
+          {
+            "date": "2024-05-24",
+            "available": false
+          },
+          {
+            "date": "2024-05-30",
+            "available": true
+          },
+          {
+            "date": "2024-06-02",
+            "available": true
+          },
+          {
+            "date": "2024-06-04",
+            "available": true
+          },
+          {
+            "date": "2234-06-02",
+            "available": false
           }
         ]
       }
