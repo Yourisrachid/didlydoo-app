@@ -232,30 +232,30 @@ button:hover {
 .eventsSection .mobile table td {
   border: 0;
   padding: 12px;
-  text-align: center;
   margin: 0;
 }
 .eventsSection .mobile table .table-date-mobile {
   background-color: var(--body-bg-color);
+  width: 5%;
 }
 .eventsSection .mobile table .table-date-mobile .table-div-date {
   display: flex;
   justify-content: space-between;
 }
 .eventsSection .mobile table .table-date-mobile .table-date-day {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 350;
   text-align: center;
   padding: 0;
   margin: 0;
 }
 .eventsSection .mobile table .table-date-month {
-  font-size: 20px;
+  font-size: 15px;
   padding: 0;
   margin: 0;
 }
 .eventsSection .mobile table .table-date-years {
-  font-size: 20px;
+  font-size: 15px;
   padding: 0;
   margin: 0;
 }

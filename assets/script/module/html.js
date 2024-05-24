@@ -233,6 +233,7 @@ export function createEventsHtmlMobile(obj){
 
 
     let nbrOfColumn = 0
+
     for (const X of obj.dates) {
  
         const tr = createElements("tr",null,null,null)
@@ -247,22 +248,75 @@ export function createEventsHtmlMobile(obj){
         
         tr.appendChild(td_date)
 
-        const td_presence = createElements("td", null, "table-date-mobile", null)
+        const td_presence = createElements("td", null, "table-date-presence", null)
 
 
         let _ok = 0
         let _notOk = 0
+        let membersOk = {};
+        let membersNotOk = {};
         for (const I of X.attendees) { 
-            if (I.available) { _ok++ }else{ _notOk++}
+            if (I.available) {
+                _ok++ 
+                if (!membersOk[I.name]) { membersOk[I.name] = {} }
+            } else {
+                _notOk++ 
+                if (!membersNotOk[I.name]) { membersNotOk[I.name] = {} }
+            }
         }
 
-        td_presence.appendChild(createElements("span", null, "table-presence-ok", "✔️ " + _ok))
-        td_presence.appendChild(createElements("span", null, "table-presence-notOk", "✖️ " + _notOk))
+        const span_ok = createElements("span", null, "table-presence-ok", "✔️ " + _ok)
+        const span_notOk = createElements("span", null, "table-presence-notOk", "✖️ " + _notOk)
+        td_presence.appendChild(span_ok)
+        td_presence.appendChild(span_notOk)
+
+        // dialog box
+
+        const dialogBoxOk = createElements("dialog", null, null, null)
+        const btnDialogOk = createElements("button", null, null, "ok")
+        btnDialogOk.addEventListener('click', (e) => {
+            e.target.parentElement.close()
+        })
+        dialogBoxOk.appendChild(createElements("p", null, null, "Members who voted ✔️"))
+        for (const X of Object.keys(membersOk)) {
+            const p = document.createElement("p")
+            p.textContent = "👤 " + X + " ✔️"
+            dialogBoxOk.appendChild(p)
+        }
+        dialogBoxOk.appendChild(btnDialogOk)
+        events.appendChild(dialogBoxOk)
+
+        if (Object.keys(membersOk).length > 0) {
+            span_ok.addEventListener('click', (e) => {
+                dialogBoxOk.showModal()
+            })
+        }
+
+        const dialogBoxNot = createElements("dialog", null, null, null)
+        const btnOkNot = createElements("button", null, null, "ok")
+        btnOkNot.addEventListener('click', (e) => {
+            e.target.parentElement.close()
+        })
+
+        dialogBoxNot.appendChild(createElements("p", null, null, "Members who voted ✖️"))
+        for (const X of Object.keys(membersNotOk)) {
+            const p = document.createElement("p")
+            p.textContent = "👤 " + X + " ✖️"
+            dialogBoxNot.appendChild(p)
+        }
+        dialogBoxNot.appendChild(btnOkNot)
+        events.appendChild(dialogBoxNot)
+
+        if (Object.keys(membersNotOk).length > 0) {
+            span_notOk.addEventListener('click', (e) => {
+                dialogBoxNot.showModal()
+            })
+        }
 
         tr.appendChild(td_presence)
 
 
-            const td = createElements("td", null, null, null)
+        const td = createElements("td", null, null, null)
         const btn = createElements("button", "input-button-" + obj.id + "-" + nbrOfColumn, "table-button " + "input-button-" + obj.id + "-mobile", "👌")
             btn.addEventListener("click", buttonChangeStatus)
             btn.dataset.date = X.date
