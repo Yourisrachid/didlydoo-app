@@ -2,7 +2,6 @@ import { postEventsAttend, patchEventsAttend, deleteEvents, postEventsDate } fro
 import { viewAllEvents } from '../script.js'
 
 export function createEventsHtml(obj) {
-
     const events = createElements("div", null, "desktop", null)
 
 
