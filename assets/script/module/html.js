@@ -2,7 +2,8 @@ import { postEventsAttend, patchEventsAttend, deleteEvents, postEventsDate } fro
 import { viewAllEvents } from '../script.js'
 
 export function createEventsHtml(obj) {
-    const events = createElements("div", null, null, null)
+
+    const events = createElements("div", null, "desktop", null)
     events.classList.add('tableCard')
 
 
@@ -31,11 +32,14 @@ export function createEventsHtml(obj) {
     let nbrOfColumn = 0
     for (const X of obj.dates) {
         dictDateId["c" + nbrOfColumn] = X.date
+        
         const th = createElements("th", null, "table-date", null)
+        const divDate = createElements("div",null,"table-div-date")
+        divDate.appendChild(createElements("span", null, "table-date-years", X.date.split("-")[0]))
+        divDate.appendChild(createElements("span", null, "table-date-month", intToMonth(X.date.split("-")[1])))
 
+        th.appendChild(divDate)
         th.appendChild(createElements("p", null, "table-date-day", X.date.split("-")[2]))
-        th.appendChild(createElements("p", null, "table-date-month", X.date.split("-")[1]))
-        th.appendChild(createElements("p", null, "table-date-years", X.date.split("-")[0]))
 
         thead.appendChild(th)
         let tempMaxValue = 0
@@ -105,7 +109,7 @@ export function createEventsHtml(obj) {
     for (const X of Object.keys(members)) {
         const tr = document.createElement("tr")
         const th = document.createElement("th")
-        th.textContent = X + " "
+        th.textContent = "👤 " + X + " "
         const edit = createElements("a", null, null, "✏️")
         th.classList.add('classTh')
         
@@ -206,10 +210,110 @@ export function createEventsHtml(obj) {
     return events
 }
 
+export function createEventsHtmlMobile(obj){
+    const events = createElements("div", null, "mobile", null)
+
+    const table = createElements("table", null, null, null)
+
+    // creation of table
+    const thead = document.createElement("thead")
+    const tbody = document.createElement("tbody")
+
+    /// head of table
+    const title = createElements("h2", null, null, obj.name)
+    const desc = createElements("p", null, null, obj.description)
+
+    const th = createElements("th", null, "table-name-mobile", null)
+    th.colspan = 3
+    
+    th.appendChild(title)
+    th.appendChild(desc)
+    thead.appendChild(th)
+
+    ///body of table
+
+
+    let nbrOfColumn = 0
+    for (const X of obj.dates) {
+ 
+        const tr = createElements("tr",null,null,null)
+        const td_date = createElements("td", null, "table-date-mobile", null)
+
+        td_date.appendChild(createElements("span", null, "table-date-years", X.date.split("-")[0]))
+        td_date.appendChild(createElements("span", null, "table-date-month", intToMonth(X.date.split("-")[1])))
+        td_date.appendChild(createElements("p", null, "table-date-day", X.date.split("-")[2]))
+        
+        tr.appendChild(td_date)
+
+        const td_presence = createElements("td", null, "table-date-mobile", null)
+
+
+        let _ok = 0
+        let _notOk = 0
+        for (const I of X.attendees) { 
+            if (I.available) { _ok++ }else{ _notOk++}
+        }
+
+        td_presence.appendChild(createElements("span", null, "table-presence-ok", "✔️ " + _ok))
+        td_presence.appendChild(createElements("span", null, "table-presence-notOk", "✖️ " + _notOk))
+
+        tr.appendChild(td_presence)
+
+
+            const td = createElements("td", null, null, null)
+        const btn = createElements("button", "input-button-" + obj.id + "-" + nbrOfColumn, "table-button " + "input-button-" + obj.id + "-mobile", "👌")
+            btn.addEventListener("click", buttonChangeStatus)
+            btn.dataset.date = X.date
+            btn.dataset.available = true
+        td.appendChild(btn)
+        
+        tr.appendChild(td)
+
+
+        nbrOfColumn++
+
+        tbody.appendChild(tr)
+    }
+
+
+    const form_tr = createElements("tr", null, null, null)
+
+    const form_td = createElements("td", null, null, null)
+    form_td.appendChild(createElements("input", "input-name-" + obj.id + "-mobile", "table-input", null))
+    const btn_td = createElements("td", null, null, null)
+    const btn_btn = createElements("button", "button-register", "table-button-register", "Register 🤌")
+    btn_btn.addEventListener('click',sendVote)
+    btn_btn.id = obj.id
+    btn_btn.dataset.mobile = true
+    btn_td.appendChild(btn_btn)
+
+    form_tr.appendChild(form_td)
+    form_tr.appendChild(btn_td)
+
+    tbody.appendChild(form_tr)
+
+
+    // append child table
+    table.appendChild(thead)
+    table.appendChild(tbody)
+
+    events.appendChild(table)
+    return events
+}
+
 
 async function sendVote(e) {
-    let inputName = document.querySelector("#input-name-" + e.target.id)
-    let inputButton = document.querySelectorAll(".input-button-" + e.target.id)
+    let inputName = ""
+    let inputButton = null
+
+    if (!e.target.dataset.mobile) {
+        inputName = document.querySelector("#input-name-" + e.target.id)
+        inputButton = document.querySelectorAll(".input-button-" + e.target.id)
+    }
+    else {
+        inputName = document.querySelector("#input-name-" + e.target.id + "-mobile")
+        inputButton = document.querySelectorAll(".input-button-" + e.target.id + "-mobile")
+    }
 
     if (inputName.value.length > 1) {
 
@@ -218,6 +322,7 @@ async function sendVote(e) {
             dates.push({ date: X.dataset.date, available: (X.dataset.available === "true" ? true : false) })
         }
 
+        console.log(e.target.id, inputName.value, dates)
         const post = await postEventsAttend(e.target.id, inputName.value, dates)
         if (post.error) {
             const patch = await patchEventsAttend(e.target.id, inputName.value, dates)
@@ -245,6 +350,11 @@ function openEditForm(id, name, author, description) {
     document.getElementById('closeEditFormButton').addEventListener('click', () => {
         editEventFormSection.close();
     });
+}
+
+function intToMonth(int) {
+    const month = ["Jan.","Feb.","Mar.","Apr.","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."]
+    return month[parseInt(int)-1]
 }
 
 

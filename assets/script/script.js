@@ -1,5 +1,5 @@
 import { getAllEvents, postEvents, patchEvents } from './module/api.js';
-import { createEventsHtml, clearHtml } from './module/html.js';
+import { createEventsHtml, createEventsHtmlMobile, clearHtml } from './module/html.js';
 import { toggleDarkMode } from "./module/DarkMode.js";
 import { addEventBlock } from './module/addEvent.js';
 
@@ -8,6 +8,7 @@ export async function viewAllEvents() {
 
     for (const X of json) {
         document.querySelector("#eventsSection").appendChild(createEventsHtml(X))
+        document.querySelector("#eventsSection").appendChild(createEventsHtmlMobile(X))
     }
 }
 
