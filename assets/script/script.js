@@ -1,7 +1,7 @@
 import { getAllEvents, postEvents, patchEvents } from './module/api.js';
 import { createEventsHtml, createEventsHtmlMobile, clearHtml } from './module/html.js';
 import { toggleDarkMode } from "./module/DarkMode.js";
-import { addEventBlock, fadeBlock, delBlock, errorBlock } from './module/addEvent.js';
+import { addEventBlock, fadeBlock, delBlock, errorBlock, errorSubmit } from './module/addEvent.js';
 
 export async function viewAllEvents() {
     const json = await getAllEvents();
@@ -40,7 +40,12 @@ addDateBtn.addEventListener('click', function () {
 })
 
 async function Test(e) {
-    await postEvents(formInputName.value, dateTable, formInputAuthor.value, formInputDescr.value)
+    if (formInputName.value=='' || formInputAuthor.value=='' || formInputDescr.value=='') {
+        errorSubmit()
+        setTimeout(delBlock, 2000)
+    } else {
+        await postEvents(formInputName.value, dateTable, formInputAuthor.value, formInputDescr.value)
+    }
 }
 
 

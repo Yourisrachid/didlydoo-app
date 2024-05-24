@@ -62,3 +62,12 @@ export function errorBlock() {
     divNotif.textContent = 'Missing or already existing date.'
 }
 
+export function errorSubmit() {
+    const divNotif = document.querySelector('.alert')
+
+    divNotif.style.visibility = 'visible'
+    divNotif.style.opacity = '1'
+    divNotif.style.backgroundColor = "#f43636"
+    divNotif.textContent = 'Complete every fields.'
+}
+
