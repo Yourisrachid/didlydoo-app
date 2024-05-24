@@ -31,10 +31,13 @@ export function createEventsHtml(obj) {
     let nbrOfColumn = 0
     for (const X of obj.dates) {
         dictDateId["c" + nbrOfColumn] = X.date
+        
         const th = createElements("th", null, "table-date", null)
+        const divDate = createElements("div",null,"table-div-date")
+        divDate.appendChild(createElements("span", null, "table-date-years", X.date.split("-")[0]))
+        divDate.appendChild(createElements("span", null, "table-date-month", intToMonth(X.date.split("-")[1])))
 
-        th.appendChild(createElements("span", null, "table-date-years", X.date.split("-")[0]))
-        th.appendChild(createElements("span", null, "table-date-month", intToMonth(X.date.split("-")[1])))
+        th.appendChild(divDate)
         th.appendChild(createElements("p", null, "table-date-day", X.date.split("-")[2]))
 
         thead.appendChild(th)
@@ -220,28 +223,30 @@ export function createEventsHtmlMobile(obj){
     const desc = createElements("p", null, null, obj.description)
 
     const th = createElements("th", null, "table-name-mobile", null)
-
+    th.colspan = 3
+    
     th.appendChild(title)
     th.appendChild(desc)
     thead.appendChild(th)
 
     ///body of table
 
+
+    let nbrOfColumn = 0
     for (const X of obj.dates) {
  
         const tr = createElements("tr",null,null,null)
         const td_date = createElements("td", null, "table-date-mobile", null)
 
+        td_date.appendChild(createElements("span", null, "table-date-years", X.date.split("-")[0]))
+        td_date.appendChild(createElements("span", null, "table-date-month", intToMonth(X.date.split("-")[1])))
         td_date.appendChild(createElements("p", null, "table-date-day", X.date.split("-")[2]))
-        td_date.appendChild(createElements("p", null, "table-date-month", intToMonth(X.date.split("-")[1])))
-        td_date.appendChild(createElements("p", null, "table-date-years", X.date.split("-")[0]))
         
         tr.appendChild(td_date)
 
         const td_presence = createElements("td", null, "table-date-mobile", null)
 
 
-        let tempMaxValue = 0
         let _ok = 0
         let _notOk = 0
         for (const I of X.attendees) { 
@@ -254,6 +259,17 @@ export function createEventsHtmlMobile(obj){
         tr.appendChild(td_presence)
 
 
+            const td = createElements("td", null, null, null)
+            const btn = createElements("button", "input-button-" + obj.id + "-" + nbrOfColumn, "table-button " + "input-button-" + obj.id, "👌")
+            btn.addEventListener("click", buttonChangeStatus)
+            btn.dataset.date = X.Date
+            btn.dataset.available = true
+        td.appendChild(btn)
+        
+        tr.appendChild(td)
+
+
+        nbrOfColumn++
 
         tbody.appendChild(tr)
     }

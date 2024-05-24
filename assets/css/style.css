@@ -50,6 +50,16 @@ body {
   overflow-x: hidden;
 }
 
+@media only screen and (min-width: 770px) {
+  .mobile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 769px) {
+  .desktop {
+    display: none;
+  }
+}
 header {
   background-color: var(--header-background);
   color: var(--text-color);
@@ -166,7 +176,6 @@ button:hover {
   background: transparent;
 }
 .eventsSection table th.table-date {
-  width: 100px;
   font-weight: lighter;
   border-radius: 4px;
   height: 50px;
@@ -177,6 +186,10 @@ button:hover {
   text-align: center;
   padding: 0;
   margin: 0;
+}
+.eventsSection table .table-date div {
+  display: flex;
+  justify-content: space-between;
 }
 .eventsSection table .table-date .table-date-month {
   font-size: 20px;
