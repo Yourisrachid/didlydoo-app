@@ -73,12 +73,27 @@ body {
 }
 
 @media only screen and (min-width: 770px) {
+    main {
+        padding: 2rem;
+        margin-left: 50px;
+    }
+    
     .mobile{
         display: none;
+    }
+
+    .tableCard {
+        overflow-x: scroll;
     }
 }
 
 @media only screen and (max-width: 769px) {
+
+    main {
+        padding: 0;
+        margin-left: 0;
+    }
+
     .eventsSection{
         max-width: 100px;
     }
