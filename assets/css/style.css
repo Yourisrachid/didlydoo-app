@@ -223,9 +223,6 @@ button:hover {
   text-align: left;
   padding: 0.5rem 0.3rem;
 }
-.eventsSection .mobile {
-  display: flex;
-}
 .eventsSection .mobile table {
   justify-content: center;
 }
@@ -236,7 +233,8 @@ button:hover {
 }
 .eventsSection .mobile table .table-date-mobile {
   background-color: var(--body-bg-color);
-  width: 5%;
+  max-width: 100px;
+  border-radius: 4px;
 }
 .eventsSection .mobile table .table-date-mobile .table-div-date {
   display: flex;

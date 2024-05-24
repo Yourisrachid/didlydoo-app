@@ -119,7 +119,7 @@ button {
         }
     }
     .mobile{
-        display: flex;
+        // display: flex;
         table {
             justify-content: center;
             td {
@@ -129,7 +129,8 @@ button {
             }
             .table-date-mobile{
                 background-color: var(--body-bg-color);
-                width: 5%;
+                max-width: 100px;
+                border-radius: 4px;
                 .table-div-date{
                     display: flex;
                     justify-content: space-between;
