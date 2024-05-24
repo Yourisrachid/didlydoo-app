@@ -171,6 +171,9 @@ button:hover {
   text-align: center;
   border-radius: 4px;
 }
+.eventsSection table tr th.classTh {
+  text-align: left;
+}
 .eventsSection table tbody .user {
   background-color: #c8e4ff;
   border: 2px solid #fff;

@@ -72,7 +72,11 @@ button {
                 
             }
         }
-        
+        tr{
+            th.classTh{
+                text-align: left;
+            }
+        }
         tbody{
             .user{
                 background-color: #c8e4ff;
