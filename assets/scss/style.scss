@@ -74,7 +74,13 @@ body {
     .desktop{
         display: none;
     }
-    
+    table{
+        border-collapse: collapse;
+        tbody{
+            background-color: var(--th-background-color);
+            
+        }
+    }
 }
 
 @import "header";

@@ -59,6 +59,12 @@ body {
   .desktop {
     display: none;
   }
+  table {
+    border-collapse: collapse;
+  }
+  table tbody {
+    background-color: var(--th-background-color);
+  }
 }
 header {
   background-color: var(--header-background);
