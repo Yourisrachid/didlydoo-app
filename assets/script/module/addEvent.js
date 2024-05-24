@@ -31,3 +31,34 @@ export function addEventBlock() {
 
 
 }
+
+
+
+export function fadeBlock() {
+
+    const divNotif = document.querySelector('.alert')
+
+    divNotif.style.visibility = 'visible'
+    divNotif.style.opacity = '1'
+    divNotif.textContent = 'Date added successfully.'
+    divNotif.style.backgroundColor = "#3cf436"
+}
+
+export function delBlock() {
+
+    const divNotif = document.querySelector('.alert')
+
+    divNotif.style.transition = 'visibility 0s 0.2s, opacity 0.2s linear'
+    divNotif.style.visibility = 'hidden'
+    divNotif.style.opacity = '0'
+}
+
+export function errorBlock() {
+    const divNotif = document.querySelector('.alert')
+
+    divNotif.style.visibility = 'visible'
+    divNotif.style.opacity = '1'
+    divNotif.style.backgroundColor = "#f43636"
+    divNotif.textContent = 'Missing or already existing date.'
+}
+

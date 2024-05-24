@@ -154,6 +154,9 @@ button:hover {
   font-style: normal;
   font-size: 40px;
 }
+.eventsSection div p {
+  text-align: center;
+}
 .eventsSection table {
   width: 80%;
   margin-top: 20px;
@@ -304,4 +307,18 @@ button:hover {
     left: 0;
     top: 0;
   }
+}
+.alert {
+  position: fixed;
+  margin-top: 30%;
+  margin-left: 73%;
+  z-index: 999999;
+  padding: 20px;
+  background-color: #3cf436;
+  color: rgb(0, 0, 0);
+  margin-bottom: 15px;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s linear;
 }/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,14 @@
+.alert {
+    position: fixed;
+    margin-top: 30%;
+    margin-left: 73%;
+    z-index: 999999;
+    padding: 20px;
+    background-color: #3cf436;
+    color: rgb(0, 0, 0);
+    margin-bottom: 15px;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition : opacity 0.2s linear;
+}

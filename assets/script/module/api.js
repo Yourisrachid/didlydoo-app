@@ -41,6 +41,7 @@ export async function postEvents(name, dates, author, description) {
         }
     })
     const json = await response.json();
+    clearHtml()
     return json;
 }
 

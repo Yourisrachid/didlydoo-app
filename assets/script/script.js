@@ -1,7 +1,7 @@
 import { getAllEvents, postEvents, patchEvents } from './module/api.js';
 import { createEventsHtml, createEventsHtmlMobile, clearHtml } from './module/html.js';
 import { toggleDarkMode } from "./module/DarkMode.js";
-import { addEventBlock } from './module/addEvent.js';
+import { addEventBlock, fadeBlock, delBlock, errorBlock } from './module/addEvent.js';
 
 export async function viewAllEvents() {
     const json = await getAllEvents();
@@ -26,8 +26,17 @@ const saveEditButton = document.getElementById('saveEditButton');
 let dateTable = []
 
 addDateBtn.addEventListener('click', function () {
-    dateTable.push(formInputDate.value)
-    console.log(dateTable)
+    
+    if (dateTable.includes(formInputDate.value)) {
+        errorBlock()
+        setTimeout(delBlock, 2000)
+        console.log('Error')
+    } else {
+        fadeBlock()
+        setTimeout(delBlock, 2000)
+        dateTable.push(formInputDate.value)
+        console.log(dateTable)
+    }
 })
 
 async function Test(e) {
@@ -37,7 +46,6 @@ async function Test(e) {
 
 submitBtn.addEventListener('click', async function (e) {
     await Test()
-    clearHtml()
 })
 
 
