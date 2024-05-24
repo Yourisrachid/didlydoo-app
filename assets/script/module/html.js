@@ -2,7 +2,7 @@ import { postEventsAttend, patchEventsAttend, deleteEvents, postEventsDate } fro
 import { viewAllEvents } from '../script.js'
 
 export function createEventsHtml(obj) {
-    const events = createElements("div", null, null, null)
+    const events = createElements("div", null, "desktop", null)
 
 
     const btnEdit = createElements("button", null, null, "✏️")
@@ -33,7 +33,7 @@ export function createEventsHtml(obj) {
         const th = createElements("th", null, "table-date", null)
 
         th.appendChild(createElements("p", null, "table-date-day", X.date.split("-")[2]))
-        th.appendChild(createElements("p", null, "table-date-month", X.date.split("-")[1]))
+        th.appendChild(createElements("p", null, "table-date-month", intToMonth(X.date.split("-")[1])))
         th.appendChild(createElements("p", null, "table-date-years", X.date.split("-")[0]))
 
         thead.appendChild(th)
@@ -104,7 +104,7 @@ export function createEventsHtml(obj) {
     for (const X of Object.keys(members)) {
         const tr = document.createElement("tr")
         const th = document.createElement("th")
-        th.textContent = X + " "
+        th.textContent = "👤 " + X + " "
         const edit = createElements("a", null, null, "✏️")
 
         edit.addEventListener("click", function (e) {
@@ -242,6 +242,11 @@ function openEditForm(id, name, author, description) {
     document.getElementById('closeEditFormButton').addEventListener('click', () => {
         editEventFormSection.close();
     });
+}
+
+function intToMonth(int) {
+    const month = ["Jan.","Feb.","Mar.","Apr.","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."]
+    return month[parseInt(int)-1]
 }
 
 
