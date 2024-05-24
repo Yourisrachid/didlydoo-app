@@ -223,7 +223,7 @@ export function createEventsHtmlMobile(obj){
     const desc = createElements("p", null, null, obj.description)
 
     const th = createElements("th", null, "table-name-mobile", null)
-    th.colspan = 3
+    th.setAttribute("colspan","3")
     
     th.appendChild(title)
     th.appendChild(desc)
@@ -238,8 +238,11 @@ export function createEventsHtmlMobile(obj){
         const tr = createElements("tr",null,null,null)
         const td_date = createElements("td", null, "table-date-mobile", null)
 
-        td_date.appendChild(createElements("span", null, "table-date-years", X.date.split("-")[0]))
-        td_date.appendChild(createElements("span", null, "table-date-month", intToMonth(X.date.split("-")[1])))
+        const divDate = createElements("div", null, "table-div-date")
+        divDate.appendChild(createElements("span", null, "table-date-years", X.date.split("-")[0]))
+        divDate.appendChild(createElements("span", null, "table-date-month", intToMonth(X.date.split("-")[1])))
+
+        td_date.appendChild(divDate)
         td_date.appendChild(createElements("p", null, "table-date-day", X.date.split("-")[2]))
         
         tr.appendChild(td_date)
