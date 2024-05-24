@@ -83,7 +83,7 @@ body {
     }
 
     .tableCard {
-        overflow-x: scroll;
+        overflow-x: auto;
     }
 }
 
@@ -91,7 +91,7 @@ body {
 
     main {
         padding: 0;
-        margin-left: 0;
+        margin-left: 1.5%;
     }
 
     .eventsSection{
@@ -105,6 +105,12 @@ body {
         background-color: var(--th-background-color);
         border-radius: 10px;
         margin: 20px 0;
+    }
+
+    #addEventBtn {
+        margin-left: 30%;
+        margin-top: 5%;
+        width: 40%
     }
 }
 

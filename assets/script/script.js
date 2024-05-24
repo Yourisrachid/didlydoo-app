@@ -27,7 +27,7 @@ let dateTable = []
 
 addDateBtn.addEventListener('click', function () {
     
-    if (dateTable.includes(formInputDate.value)) {
+    if (dateTable.includes(formInputDate.value) || formInputDate.value=='') {
         errorBlock()
         setTimeout(delBlock, 2000)
         console.log('Error')

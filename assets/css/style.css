@@ -65,13 +65,13 @@ body {
     display: none;
   }
   .tableCard {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 }
 @media only screen and (max-width: 769px) {
   main {
     padding: 0;
-    margin-left: 0;
+    margin-left: 1.5%;
   }
   .eventsSection {
     max-width: 100px;
@@ -83,6 +83,11 @@ body {
     background-color: var(--th-background-color);
     border-radius: 10px;
     margin: 20px 0;
+  }
+  #addEventBtn {
+    margin-left: 30%;
+    margin-top: 5%;
+    width: 40%;
   }
 }
 header {
@@ -263,7 +268,7 @@ button:hover {
 }
 .eventsSection .mobile table .table-date-mobile {
   background-color: var(--body-bg-color);
-  max-width: 100px;
+  width: 100px;
   border-radius: 4px;
 }
 .eventsSection .mobile table .table-date-mobile .table-div-date {
@@ -296,7 +301,7 @@ dialog {
   background-color: var(--add-bg-color);
   width: 300px;
   text-align: center;
-  height: 200px;
+  max-height: 67%;
   border: none;
   border-radius: 4px;
 }
@@ -369,7 +374,6 @@ dialog table tbody .user {
   width: 50%;
   background-color: var(--add-bg-color);
   color: var(--body-text-color);
-  overflow-y: scroll;
 }
 .eventFormSection h2 {
   margin-left: 6%;
