@@ -260,9 +260,9 @@ export function createEventsHtmlMobile(obj){
 
 
             const td = createElements("td", null, null, null)
-            const btn = createElements("button", "input-button-" + obj.id + "-" + nbrOfColumn, "table-button " + "input-button-" + obj.id, "👌")
+        const btn = createElements("button", "input-button-" + obj.id + "-" + nbrOfColumn, "table-button " + "input-button-" + obj.id + "-mobile", "👌")
             btn.addEventListener("click", buttonChangeStatus)
-            btn.dataset.date = X.Date
+            btn.dataset.date = X.date
             btn.dataset.available = true
         td.appendChild(btn)
         
@@ -275,6 +275,22 @@ export function createEventsHtmlMobile(obj){
     }
 
 
+    const form_tr = createElements("tr", null, null, null)
+
+    const form_td = createElements("td", null, null, null)
+    form_td.appendChild(createElements("input", "input-name-" + obj.id + "-mobile", "table-input", null))
+    const btn_td = createElements("td", null, null, null)
+    const btn_btn = createElements("button", "button-register", "table-button-register", "Register 🤌")
+    btn_btn.addEventListener('click',sendVote)
+    btn_btn.id = obj.id
+    btn_btn.dataset.mobile = true
+    btn_td.appendChild(btn_btn)
+
+    form_tr.appendChild(form_td)
+    form_tr.appendChild(btn_td)
+
+    tbody.appendChild(form_tr)
+
 
     // append child table
     table.appendChild(thead)
@@ -286,8 +302,17 @@ export function createEventsHtmlMobile(obj){
 
 
 async function sendVote(e) {
-    let inputName = document.querySelector("#input-name-" + e.target.id)
-    let inputButton = document.querySelectorAll(".input-button-" + e.target.id)
+    let inputName = ""
+    let inputButton = null
+
+    if (!e.target.dataset.mobile) {
+        inputName = document.querySelector("#input-name-" + e.target.id)
+        inputButton = document.querySelectorAll(".input-button-" + e.target.id)
+    }
+    else {
+        inputName = document.querySelector("#input-name-" + e.target.id + "-mobile")
+        inputButton = document.querySelectorAll(".input-button-" + e.target.id + "-mobile")
+    }
 
     if (inputName.value.length > 1) {
 
@@ -296,6 +321,7 @@ async function sendVote(e) {
             dates.push({ date: X.dataset.date, available: (X.dataset.available === "true" ? true : false) })
         }
 
+        console.log(e.target.id, inputName.value, dates)
         const post = await postEventsAttend(e.target.id, inputName.value, dates)
         if (post.error) {
             const patch = await patchEventsAttend(e.target.id, inputName.value, dates)
