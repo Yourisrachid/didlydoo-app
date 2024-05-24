@@ -248,7 +248,7 @@ export function createEventsHtmlMobile(obj){
         
         tr.appendChild(td_date)
 
-        const td_presence = createElements("td", null, "table-date-mobile", null)
+        const td_presence = createElements("td", null, "table-date-presence", null)
 
 
         let _ok = 0
