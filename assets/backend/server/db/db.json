@@ -18,6 +18,10 @@
         "name": "nath",
         "dates": [
           {
+            "date": "2024-05-24",
+            "available": true
+          },
+          {
             "date": "2024-05-30",
             "available": false
           },

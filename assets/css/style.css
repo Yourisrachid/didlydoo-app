@@ -160,19 +160,43 @@ button:hover {
 }
 .eventsSection table th {
   background-color: var(--th-background-color);
-  font-weight: bold;
+  font-weight: lighter;
 }
 .eventsSection table th.table-hidden {
   background: transparent;
 }
 .eventsSection table th.table-date {
-  font-weight: bold;
-  align-items: center;
-  text-align: center;
+  width: 100px;
+  font-weight: lighter;
   border-radius: 4px;
+  height: 50px;
+}
+.eventsSection table .table-date .table-date-day {
+  font-size: 30px;
+  font-weight: 350;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.eventsSection table .table-date .table-date-month {
+  display: flex;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+.eventsSection table .table-date .table-date-years {
+  display: flex;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
 }
 .eventsSection table tr th.classTh {
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+.eventsSection table tr th.classTh a {
+  cursor: pointer;
 }
 .eventsSection table tbody .user {
   background-color: #c8e4ff;
